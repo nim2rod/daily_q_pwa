@@ -5,15 +5,15 @@ const SubmitButton = ({ code, setOutput, userId }) => {
     const handleSubmit = () => {
         // axios.post('http://localhost:3030/submit-code', { code })
 
-        if(userId === ''){
-            const randomId = (()=>{
-                return Math.floor(Math.random()*10000)
+        if (userId === '') {
+            const randomId = (() => {
+                return Math.floor(Math.random() * 10000)
             })
 
-            let id = sessionStorage.getItem("tempId") 
-            if(!id) {
+            let id = localStorage.getItem("tempId")
+            if (!id) {
                 id = randomId()
-                sessionStorage.setItem("tempId",id)
+                localStorage.setItem("tempId", id)
             }
             userId = id
         }
