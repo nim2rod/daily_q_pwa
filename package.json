@@ -10,17 +10,21 @@
     "codemirror": "^5.65.16",
     "dotenv": "^16.4.5",
     "react": "^18.3.1",
+    "react-app-rewired": "^2.2.1",
     "react-codemirror2": "^8.0.0",
     "react-dom": "^18.3.1",
     "react-scripts": "5.0.1",
     "react-share": "^5.1.0",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "workbox-webpack-plugin": "^7.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "precache": "workbox generateSW workbox-config.js",
+    "build-pwa": "react-scripts build && npm run precache"
   },
   "eslintConfig": {
     "extends": [
