@@ -1,0 +1,149 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+button {
+  font-size: 1.3em;
+  color: white;
+  background-color: #a2a2a2;
+  border: none;
+  margin: 0.5px;
+  border-radius: 3px;
+  cursor: pointer;
+  padding: 5px;
+  margin: 10px;
+}
+
+.q_m_wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-size: 1.2em;
+}
+
+/* Editor */
+.CodeMirror {
+  border: solid 2px grey;
+  width: 500px;
+  text-align: justify;
+  font-size: 1.6em;
+}
+
+/* Share-cmp */
+.react-share__ShareButton {
+  margin-right: 5px;
+}
+
+.react-share__ShareButton:hover:not(:active) {
+  opacity: 0.7;
+}
+
+.btn-share {
+  border-radius: 3px;
+  cursor: pointer;
+  font-weight: 500;
+  background-color: #e09b9bed;
+  padding: 2px;
+  color: white;
+}
+
+/* Modal */
+/* src/cmp/Modal.css */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* background: rgba(0, 0, 0, 0.5); */
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  z-index: 1;
+}
+
+.modal {
+  background: #e09b9bed;
+  color: #fffdfd;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+
+/* Medals-cmp: */
+.medalsCmp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  margin: auto;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.daysSolved {
+  font-size: 1.4em;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 160px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  /* Position above the tooltip icon */
+  left: 50%;
+  margin-left: -80px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.medalsCmp strong {
+  display: flex;
+  align-items: center;
+}
+
+.info-icon {
+  width: 18px;
+  margin-left: 5px;
+}
+
+/* Media-query */
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

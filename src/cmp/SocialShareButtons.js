@@ -1,0 +1,63 @@
+// src/cmp/SocialShareButtons.js
+import React, {useState, useEffect} from 'react';
+import {
+    FacebookShareButton,
+    TwitterShareButton,
+    LinkedinShareButton,
+    WhatsappShareButton,
+    FacebookIcon,
+    XIcon,
+    LinkedinIcon,
+    WhatsappIcon
+} from 'react-share';
+import Modal from './ModalCopy'
+
+const SocialShareButtons = ({ url, text }) => {
+    const [showModal, setShowModal] = useState(false)
+
+    useEffect(() => {
+    console.log('social cmp open!')
+    console.log('text: ',text)
+    navigator.clipboard.writeText(text).then(() => {
+        // alert("The content is copied, you can now share it on social (Ctrl+V)");
+        setShowModal(true)
+        setTimeout(() => {
+            setShowModal(false)
+        }, 1500);
+      }, (err) => {
+        console.error('Failed to copy: ', err);
+      });
+    }, [text])
+    
+    const handleShareClick =(()=>{
+        console.log('content copy, you can past it on social!')
+        navigator.clipboard.writeText(text).then(() => {
+            alert("The content is copied, you can now share it on social (Ctrl+V)");
+          }, (err) => {
+            console.error('Failed to copy: ', err);
+          });
+    })
+
+    return (
+        <div>
+            <span><span className="btn-share" onClick={handleShareClick}>Share</span> on social that you solved the daily_q!</span>
+            <div>
+                <FacebookShareButton url={url} quote={text} title={text} hashtag='#daily_q'>
+                    <FacebookIcon size={32} round={true} />
+                </FacebookShareButton>
+                <TwitterShareButton url={url} title={text}>
+                    <XIcon size={32} round={true} />
+                </TwitterShareButton>
+                <LinkedinShareButton url={url} title={text} summary={text} source={url} source="Daily Q" >
+                    <LinkedinIcon size={32} round={true} />
+                </LinkedinShareButton>
+                <WhatsappShareButton url={url} title={text}>
+                    <WhatsappIcon size={32} round={true}/>
+                </WhatsappShareButton>
+            </div>
+                <Modal show ={showModal}/>
+        </div>
+    );
+};
+
+export default SocialShareButtons;
