@@ -64,8 +64,7 @@ const SocialShareButtons = ({ url, text }) => {
                 <WhatsappShareButton url={url} title={text}>
                     <WhatsappIcon size={32} round={true}/>
                 </WhatsappShareButton>
-                {/* <p onClick={handleShareOptions}>•••</p> */}
-                <p>checkkkkkkk</p>
+                <p onClick={handleShareOptions}>•••</p>
             </div>
                 <Modal show ={showModal}/>
         </div>
