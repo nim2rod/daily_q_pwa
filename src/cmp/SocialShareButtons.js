@@ -38,15 +38,15 @@ const SocialShareButtons = ({ url, text }) => {
           });
     })
 
-    const handleShare = async ()=>{
-        const handleShareApp = (()=>{
+
+        const handleShareOptions = (()=>{
             navigator.share({
               title: "Share dailyQ app",
               text: {text},
               url: 'https://dailyqpwa-nimrod-devs-projects.vercel.app/',
             });
           })
-    }
+
 
     return (
         <div>
@@ -64,8 +64,7 @@ const SocialShareButtons = ({ url, text }) => {
                 <WhatsappShareButton url={url} title={text}>
                     <WhatsappIcon size={32} round={true}/>
                 </WhatsappShareButton>
-                <p onClick={handleShareApp}>•••</p>
-                <p onClick={handleShareApp}>check</p>
+                <p onClick={handleShareOptions}>•••</p>
             </div>
                 <Modal show ={showModal}/>
         </div>
