@@ -1,7 +1,6 @@
 import React from 'react'
 
 const ShareBtn = () => {
-    const handleShare = async ()=>{
         const handleShareApp = (()=>{
             navigator.share({
               title: "Share dailyQ app",
@@ -9,7 +8,7 @@ const ShareBtn = () => {
               url: 'https://dailyqpwa-nimrod-devs-projects.vercel.app/',
             });
           })
-    }
+    
 
   return (
       <>
