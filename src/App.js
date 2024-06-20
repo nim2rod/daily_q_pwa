@@ -30,9 +30,18 @@ function App() {
     setShareText(text);
   };
 
+  const handleShareApp = (()=>{
+    navigator.share({
+      title: "Share dailyQ app",
+      text: "Check out this awesome app!",
+      url: 'https://dailyqpwa-nimrod-devs-projects.vercel.app/',
+    });
+  })
+
   return (
     <div className="App">
-      <h1>The Daily Question:</h1>
+      <p className='share_header' onClick={handleShareApp}>Share App 💬</p>
+      <h1 className="headline">The Daily Question:</h1>
       {output && output.Results && <Results output={output} />}
 
       {isPassed &&(

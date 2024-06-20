@@ -19,6 +19,17 @@ button {
   margin: 10px;
 }
 
+.share_header {
+  position: absolute;
+  left: 4%;
+  top: -1%;
+  font-size: 1.2em;
+}
+
+.headline {
+  margin-top: 35px;
+}
+
 .q_m_wrapper {
   display: flex;
   flex-direction: column;
