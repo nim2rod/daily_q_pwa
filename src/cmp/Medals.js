@@ -53,9 +53,9 @@ const Medals = ({output, setShareText}) => {
             console.log('already solved today')
                     // Update share text
                     if (streak === 1) {
-                        setShareText(`I just solved today's coding question on Daily Q!\n only ${output.solvedCount} solved today`);
+                        setShareText(`I just solved today's coding question on Daily Q!\nOnly ${output.solvedCount} solved today`);
                     } else {
-                        setShareText(`I just solved today's coding question on Daily Q!\n${streak} days in a row!\n only ${output.solvedCount} solved today`);
+                        setShareText(`I just solved today's coding question on Daily Q!\n${streak} days in a row!\nOnly ${output.solvedCount} solved today`);
                     }
             return 
         } else {   
