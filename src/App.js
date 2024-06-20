@@ -37,7 +37,7 @@ function App() {
 
       {isPassed &&(
           <SocialShareButtons
-          url="https://ynet.co.il" // Replace with your web app URL
+          url="https://dailyqpwa-nimrod-devs-projects.vercel.app/" // Replace with your web app URL
           text={shareText}
           />
         )}
