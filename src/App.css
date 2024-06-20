@@ -63,6 +63,15 @@ button {
   color: white;
 }
 
+.social-wraper {
+  display: flex;
+  justify-content: center;
+}
+
+.social-wraper p {
+  padding-left: 10px;
+}
+
 /* Modal */
 /* src/cmp/Modal.css */
 .modal-overlay {

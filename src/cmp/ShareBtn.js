@@ -2,22 +2,19 @@ import React from 'react'
 
 const ShareBtn = () => {
     const handleShare = async ()=>{
-        try {
-            await navigator.share({
-                title: 'Daily Q',
-                text: 'i solved the daily question!',
-                // url: url,
-            })
-            console.log('Content shared successfully')
-        } catch (error) {
-            console.error('Error share ', error)
-        }
+        const handleShareApp = (()=>{
+            navigator.share({
+              title: "Share dailyQ app",
+              text: "Check out this awesome app!",
+              url: 'https://dailyqpwa-nimrod-devs-projects.vercel.app/',
+            });
+          })
     }
 
   return (
-        <button onClick={handleShare}>
-            Share
-        </button>
+      <>
+       <p className='share_header' onClick={handleShareApp}>Share App 💬</p>
+      </>
   )
 }
 

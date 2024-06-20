@@ -40,7 +40,8 @@ function App() {
 
   return (
     <div className="App">
-      <p className='share_header' onClick={handleShareApp}>Share App 💬</p>
+      {/* <p className='share_header' onClick={handleShareApp}>Share App 💬</p> */}
+      <ShareBtn/>
       <h1 className="headline">The Daily Question:</h1>
       {output && output.Results && <Results output={output} />}
 
