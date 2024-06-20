@@ -26,6 +26,13 @@ button {
   font-size: 1.2em;
 }
 
+.js-icon {
+  width: 24px;
+  position: absolute;
+  top: 2%;
+  right: 3%;
+}
+
 .headline {
   margin-top: 35px;
 }

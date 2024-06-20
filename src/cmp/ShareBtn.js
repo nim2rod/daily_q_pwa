@@ -13,6 +13,7 @@ const ShareBtn = () => {
   return (
       <>
        <p className='share_header' onClick={handleShareApp}>Share App 💬</p>
+       <img src={require('.././icons/js-file.png')} alt="js-file" className="js-icon" />
       </>
   )
 }
