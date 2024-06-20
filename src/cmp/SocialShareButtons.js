@@ -42,7 +42,7 @@ const SocialShareButtons = ({ url, text }) => {
         const handleShareOptions = (()=>{
             navigator.share({
               title: "Share dailyQ app",
-              text: {text},
+              text: text,
               url: 'https://dailyqpwa-nimrod-devs-projects.vercel.app/',
             });
           })
