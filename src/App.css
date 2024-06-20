@@ -29,7 +29,7 @@ button {
 /* Editor */
 .CodeMirror {
   border: solid 2px grey;
-  width: 500px;
+  /* width: 500px; */
   text-align: justify;
   font-size: 1.6em;
 }
