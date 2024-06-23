@@ -1,27 +1,34 @@
 // src/components/CodeEditor.js
-import React,{useEffect} from 'react';
+import React, { useEffect } from 'react';
+import { getFromLocal, setToLocal } from '../utils/localStorage'
 import { Controlled as CodeMirror } from 'react-codemirror2';
 import 'codemirror/lib/codemirror.css';
-import 'codemirror/theme/material.css';
 import 'codemirror/mode/javascript/javascript';
-import {getFromLocal, setToLocal} from '../utils/localStorage'
+import 'codemirror/theme/material.css';
+import 'codemirror/theme/dracula.css';
+import 'codemirror/theme/eclipse.css';
+// import 'codemirror/theme/tokyo-night-day.css';
+// import 'codemirror/theme/quietlight.css';
 
-const CodeEditor = ({ code, setCode }) => {
+
+
+const CodeEditor = ({ code, setCode, editorTheme }) => {
     useEffect(() => {
-      const savedCode = getFromLocal()
-      if(savedCode) setCode(savedCode)
+        const savedCode = getFromLocal()
+        if (savedCode) setCode(savedCode)
     }, [])
-    
+
     useEffect(() => {
-    setToLocal(code)
-      }, [code])
+        setToLocal(code)
+    }, [code])
 
     return (
         <CodeMirror
             value={code}
             options={{
                 mode: 'javascript',
-                theme: 'material',
+                theme: editorTheme,
+                // theme: 'dracula',
                 lineNumbers: true
             }}
             onBeforeChange={(editor, data, value) => {

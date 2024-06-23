@@ -17,7 +17,7 @@ function App() {
   const [shareText, setShareText] = useState('');
   const [userLog, setUserLog] = useState('guest')
   const [editorProvider, setEditorProvider] = useState('mirror')
-  const [editorTheme, setEditorTheme] = useState('vs-dark');
+  const [editorTheme, setEditorTheme] = useState('material');
 
   useEffect(() => {
     if (output && output.Passed !== undefined) {
@@ -62,21 +62,20 @@ function App() {
         <Medals output={output} setShareText={handleSetShareText} />
       </div>
       {editorProvider === 'mirror' ? (
-        <CodeEditorMirror code={code} setCode={setCode} />
+        <CodeEditorMirror code={code} setCode={setCode} editorTheme={editorTheme} />
       ) : (
         <CodeEditorMonaco code={code} setCode={setCode} editorTheme={editorTheme} />
       )}
+
       <div className="theme-editor-choose">
-        {/* <div onClick={() => { changeEditor('vs'); changeEditorTheme('vs-dark'); }} >
-          <img src={require('./icons/visual-studio.png')} alt="info" style={{ width: 23 }} />
-        </div> */}
-        <img src={require('./icons/visual-studio.png')} alt="info"
-          style={{ width: 24 }}
+        <img src={require('./icons/vs-black.png')} alt="info"
+          style={{ width: 25 }}
           onClick={() => { changeEditor('vs'); changeEditorTheme('vs-dark'); }}
         />
-        <div onClick={() => { changeEditor('vs'); changeEditorTheme('light'); }} >⚪️</div>
-        <div onClick={() => changeEditor('mirror')} >🟣</div>
+        <div onClick={() => { changeEditor('mirror'); changeEditorTheme('eclipse'); }} >⚪️</div>
+        <div onClick={() => { changeEditor('mirror'); changeEditorTheme('dracula'); }} >🟣</div>
       </div>
+
       <SubmitBtn code={code} setOutput={setOutput} userId={userLog._id || ''} />
     </div>
   );
