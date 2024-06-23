@@ -23,6 +23,9 @@ const Editor_monaco = ({ code, setCode }) => {
                 defaultValue={code}
                 onChange={handleEditorChange}
                 theme="vs-dark"
+                options={{
+                    fontSize: 20 // Adjust this value to set the font size
+                  }}
             />
     )
 }
