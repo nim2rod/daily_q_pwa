@@ -58,7 +58,7 @@ button {
   font-size: 1.5em;
   padding: 1%;
   cursor: pointer;
-  align-items: flex-end;
+  align-items: center;
 }
 
 /* Monaco */
