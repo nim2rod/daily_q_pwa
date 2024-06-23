@@ -67,9 +67,13 @@ function App() {
         <CodeEditorMonaco code={code} setCode={setCode} editorTheme={editorTheme} />
       )}
       <div className="theme-editor-choose">
-        <div onClick={() => { changeEditor('vs'); changeEditorTheme('vs-dark'); }} >
+        {/* <div onClick={() => { changeEditor('vs'); changeEditorTheme('vs-dark'); }} >
           <img src={require('./icons/visual-studio.png')} alt="info" style={{ width: 23 }} />
-        </div>
+        </div> */}
+        <img src={require('./icons/visual-studio.png')} alt="info"
+          style={{ width: 24 }}
+          onClick={() => { changeEditor('vs'); changeEditorTheme('vs-dark'); }}
+        />
         <div onClick={() => { changeEditor('vs'); changeEditorTheme('light'); }} >⚪️</div>
         <div onClick={() => changeEditor('mirror')} >🟣</div>
       </div>
