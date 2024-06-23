@@ -52,6 +52,11 @@ button {
   font-size: 1.6em;
 }
 
+/* Editpr Monaco CSS  */
+.view-lines {
+  font-size: 1.3em
+}
+
 /* Share-cmp */
 .react-share__ShareButton {
   margin-right: 5px;

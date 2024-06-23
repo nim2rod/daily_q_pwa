@@ -1,6 +1,7 @@
 // src/App.js
 import React, { useState, useEffect } from 'react';
-import CodeEditor from './cmp/Editor';
+// import CodeEditor from './cmp/Editor';
+import CodeEditor from './cmp/Editor_monaco'
 import ShowQuestion from './cmp/ShowQuestion';
 import SubmitBtn from './cmp/SubmitButton'
 import ShareBtn from './cmp/ShareBtn'
@@ -17,20 +18,20 @@ function App() {
   const [userLog, setUserLog] = useState('guest')
 
   useEffect(() => {
-    if (output && output.Passed !== undefined){
-       setIsPassed(output.Passed)
+    if (output && output.Passed !== undefined) {
+      setIsPassed(output.Passed)
     }
   }, [output])
 
   useEffect(() => {
-  console.log('app loaded')
+    console.log('app loaded')
   }, [])
-  
+
   const handleSetShareText = (text) => {
     setShareText(text);
   };
 
-  const handleShareApp = (()=>{
+  const handleShareApp = (() => {
     navigator.share({
       title: "Share dailyQ app",
       text: "Check out this awesome app!",
@@ -41,22 +42,22 @@ function App() {
   return (
     <div className="App">
       {/* <p className='share_header' onClick={handleShareApp}>Share App 💬</p> */}
-      <ShareBtn/>
+      <ShareBtn />
       <h1 className="headline">The Daily Question:</h1>
       {output && output.Results && <Results output={output} />}
 
-      {isPassed &&(
-          <SocialShareButtons
+      {isPassed && (
+        <SocialShareButtons
           url="https://dailyqpwa-nimrod-devs-projects.vercel.app/" // Replace with your web app URL
           text={shareText}
-          />
-        )}
+        />
+      )}
       <div className="q_m_wrapper">
         <ShowQuestion />
-        <Medals output={output} setShareText = {handleSetShareText}/>
+        <Medals output={output} setShareText={handleSetShareText} />
       </div>
       <CodeEditor code={code} setCode={setCode} />
-      <SubmitBtn code={code} setOutput={setOutput} userId={userLog._id || ''}/>
+      <SubmitBtn code={code} setOutput={setOutput} userId={userLog._id || ''} />
     </div>
   );
 }
