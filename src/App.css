@@ -60,6 +60,19 @@ button {
   cursor: pointer;
 }
 
+/* Monaco */
+.margin-view-overlays {
+  width: 40px !important
+}
+
+.line-numbers {
+  width: 25px !important
+}
+
+.monaco-scrollable-element {
+  left: 35px !important;
+}
+
 /* Share-cmp */
 .react-share__ShareButton {
   margin-right: 5px;

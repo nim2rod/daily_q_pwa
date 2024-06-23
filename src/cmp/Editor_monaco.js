@@ -17,16 +17,16 @@ const Editor_monaco = ({ code, setCode, editorTheme }) => {
     })
 
     return (
-            <Editor
-                height="300px"
-                defaultLanguage="javascript"
-                defaultValue={code}
-                onChange={handleEditorChange}
-                theme={editorTheme}
-                options={{
-                    fontSize: 18 // Adjust this value to set the font size
-                  }}
-            />
+        <Editor
+            height="300px"
+            defaultLanguage="javascript"
+            defaultValue={code}
+            onChange={handleEditorChange}
+            theme={editorTheme}
+            options={{
+                fontSize: 20 // Adjust this value to set the font size
+            }}
+        />
     )
 }
 
