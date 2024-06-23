@@ -46,7 +46,7 @@ button {
 
 /* Editor */
 .CodeMirror {
-  border: solid 2px grey;
+  /* border: solid 2px grey; */
   text-align: justify;
   font-size: 1.6em;
 }
