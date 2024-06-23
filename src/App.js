@@ -1,7 +1,7 @@
 // src/App.js
 import React, { useState, useEffect } from 'react';
-// import CodeEditor from './cmp/Editor';
-import CodeEditor from './cmp/Editor_monaco'
+import CodeEditorMirror from './cmp/Editor';
+import CodeEditorMonaco from './cmp/Editor_monaco'
 import ShowQuestion from './cmp/ShowQuestion';
 import SubmitBtn from './cmp/SubmitButton'
 import ShareBtn from './cmp/ShareBtn'
@@ -16,6 +16,8 @@ function App() {
   const [isPassed, setIsPassed] = useState(false)
   const [shareText, setShareText] = useState('');
   const [userLog, setUserLog] = useState('guest')
+  const [editorProvider, setEditorProvider] = useState('mirror')
+  const [editorTheme, setEditorTheme] = useState('vs-dark');
 
   useEffect(() => {
     if (output && output.Passed !== undefined) {
@@ -39,9 +41,12 @@ function App() {
     });
   })
 
+  const changeEditor = (val)=>  setEditorProvider(val)
+  const changeEditorTheme = (theme) => setEditorTheme(theme);
+
+
   return (
     <div className="App">
-      {/* <p className='share_header' onClick={handleShareApp}>Share App 💬</p> */}
       <ShareBtn />
       <h1 className="headline">The Daily Question:</h1>
       {output && output.Results && <Results output={output} />}
@@ -56,8 +61,17 @@ function App() {
         <ShowQuestion />
         <Medals output={output} setShareText={handleSetShareText} />
       </div>
-      <CodeEditor code={code} setCode={setCode} />
-      <SubmitBtn code={code} setOutput={setOutput} userId={userLog._id || ''} />
+      {editorProvider === 'mirror' ? (
+        <CodeEditorMirror code={code} setCode={setCode} />
+      ) : (
+        <CodeEditorMonaco code={code} setCode={setCode} editorTheme={editorTheme}/>
+      )}
+      <div className="theme-editor-choose">
+        <div onClick = {() => {changeEditor('vs') ; changeEditorTheme('light'); }} >⚪️</div>
+        <div onClick = {() => {changeEditor('vs') ; changeEditorTheme('vs-dark'); }} >⚫️</div>
+        <div onClick = {() => changeEditor('mirror')} >🟣</div>
+      </div>
+        <SubmitBtn code={code} setOutput={setOutput} userId={userLog._id || ''} />
     </div>
   );
 }

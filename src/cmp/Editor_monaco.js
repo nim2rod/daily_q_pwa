@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import Editor from '@monaco-editor/react'
 import { getFromLocal, setToLocal } from '../utils/localStorage'
 
-const Editor_monaco = ({ code, setCode }) => {
+const Editor_monaco = ({ code, setCode, editorTheme }) => {
     useEffect(() => {
         const savedCode = getFromLocal()
         if (savedCode) setCode(savedCode)
@@ -22,7 +22,7 @@ const Editor_monaco = ({ code, setCode }) => {
                 defaultLanguage="javascript"
                 defaultValue={code}
                 onChange={handleEditorChange}
-                theme="vs-dark"
+                theme={editorTheme}
                 options={{
                     fontSize: 18 // Adjust this value to set the font size
                   }}

@@ -51,6 +51,15 @@ button {
   font-size: 1.6em;
 }
 
+.theme-editor-choose {
+  position: absolute;
+  display: flex;
+  gap: 20%;
+  font-size: 1.5em;
+  padding: 1%;
+  cursor: pointer;
+}
+
 /* Share-cmp */
 .react-share__ShareButton {
   margin-right: 5px;
