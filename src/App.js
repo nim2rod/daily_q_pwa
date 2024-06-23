@@ -41,7 +41,7 @@ function App() {
     });
   })
 
-  const changeEditor = (val)=>  setEditorProvider(val)
+  const changeEditor = (val) => setEditorProvider(val)
   const changeEditorTheme = (theme) => setEditorTheme(theme);
 
 
@@ -64,14 +64,16 @@ function App() {
       {editorProvider === 'mirror' ? (
         <CodeEditorMirror code={code} setCode={setCode} />
       ) : (
-        <CodeEditorMonaco code={code} setCode={setCode} editorTheme={editorTheme}/>
+        <CodeEditorMonaco code={code} setCode={setCode} editorTheme={editorTheme} />
       )}
       <div className="theme-editor-choose">
-        <div onClick = {() => {changeEditor('vs') ; changeEditorTheme('light'); }} >⚪️</div>
-        <div onClick = {() => {changeEditor('vs') ; changeEditorTheme('vs-dark'); }} >⚫️</div>
-        <div onClick = {() => changeEditor('mirror')} >🟣</div>
+        <div onClick={() => { changeEditor('vs'); changeEditorTheme('vs-dark'); }} >
+          <img src={require('./icons/visual-studio.png')} alt="info" style={{ width: 23 }} />
+        </div>
+        <div onClick={() => { changeEditor('vs'); changeEditorTheme('light'); }} >⚪️</div>
+        <div onClick={() => changeEditor('mirror')} >🟣</div>
       </div>
-        <SubmitBtn code={code} setOutput={setOutput} userId={userLog._id || ''} />
+      <SubmitBtn code={code} setOutput={setOutput} userId={userLog._id || ''} />
     </div>
   );
 }
