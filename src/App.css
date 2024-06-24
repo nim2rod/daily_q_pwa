@@ -60,7 +60,7 @@ button {
   cursor: pointer;
   align-items: center;
   -webkit-tap-highlight-color: transparent;
-  caret-color: transparent;
+  user-select: none;
 }
 
 /* Monaco */
