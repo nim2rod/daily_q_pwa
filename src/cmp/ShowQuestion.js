@@ -41,7 +41,6 @@ const ShowQuestion = () => {
                     ))}
                 </span>
             </div>
-
         </>
     )
 }
