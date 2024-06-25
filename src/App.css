@@ -24,6 +24,7 @@ button {
   left: 4%;
   top: -1%;
   font-size: 1.2em;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .js-icon {
