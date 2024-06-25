@@ -1,7 +1,7 @@
 // Medals.js: 
-import React, {useState, useEffect, useCallback} from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 
-const Medals = ({output, setShareText}) => {
+const Medals = ({ output, setShareText }) => {
     const [streak, setStreak] = useState(0)
     const [medals, setMedals] = useState([])
     const [lastDateSolved, setLastDateSolved] = useState('')
@@ -11,7 +11,7 @@ const Medals = ({output, setShareText}) => {
         date.setDate(date.getDate() + offset);
         return date.toISOString().split('T')[0];
     };
-    
+
     const loadDataFromStorage = () => { // Load from l-storage
         const streak = localStorage.getItem('streak');
         const lastSolvedDate = localStorage.getItem('lastSolvedDate');
@@ -30,20 +30,20 @@ const Medals = ({output, setShareText}) => {
             medals
         };
     };
-    
+
     const saveDataToStorage = (streak, date, medals) => { // Set to l-storage
         localStorage.setItem('streak', streak);
         localStorage.setItem('lastSolvedDate', date);
         localStorage.setItem('medals', JSON.stringify(medals))
     };
 
-    const setDataWhenMount = useCallback(()=>{
+    const setDataWhenMount = useCallback(() => {
         const { streak, lastSolvedDate, medals } = loadDataFromStorage();
         setStreak(streak)
         setMedals(medals)
         setLastDateSolved(lastSolvedDate)
         console.log('Data loaded from storage')
-    },[])
+    }, [])
 
     const updateStreakAndMedals = useCallback(() => {
         const currentDate = getCurrentDate();
@@ -51,14 +51,14 @@ const Medals = ({output, setShareText}) => {
 
         if (lastDateSolved === currentDate) { // today allready solved - not need to di anything.
             console.log('already solved today')
-                    // Update share text
-                    if (streak === 1) {
-                        setShareText(`I just solved today's coding question on Daily Q!\nOnly ${output.solvedCount} solved today`);
-                    } else {
-                        setShareText(`I just solved today's coding question on Daily Q!\n${streak} days in a row!\nOnly ${output.solvedCount} solved today`);
-                    }
-            return 
-        } else {   
+            // Update share text
+            if (streak === 1) {
+                setShareText(`I just solved today's coding question on Daily Q!\nOnly ${output.solvedCount} solved today`);
+            } else {
+                setShareText(`I just solved today's coding question on Daily Q!\n${streak} days in a row!\nOnly ${output.solvedCount} solved today`);
+            }
+            return
+        } else {
             console.log('solve first time today')
             const newStreak = lastDateSolved === getCurrentDate(-1) ? streak + 1 : 1;
             let newMedals = [...medals]; // []
@@ -73,9 +73,9 @@ const Medals = ({output, setShareText}) => {
             setMedals(newMedals); // []
             setLastDateSolved(currentDate)
             saveDataToStorage(newStreak, currentDate, newMedals); //1 ,today, []
-            console.log('Updated streak and medals:', { newStreak, newMedals, currentDate }); 
+            console.log('Updated streak and medals:', { newStreak, newMedals, currentDate });
 
-             // Update share text
+            // Update share text
             if (newStreak === 1) {
                 setShareText(`I just solved today's coding question on Daily Q!\nOnly ${output.solvedCount} solved today!`);
             } else {
@@ -98,18 +98,18 @@ const Medals = ({output, setShareText}) => {
         <div className="medalsCmp">
             {streak !== 0 && (
                 <span className="daysSolved">You solved {streak} days in a row!</span>
-                )}
+            )}
 
             {medals.length > 0 ? (
                 <span>Medal Earned: {medals.join(', ')}</span>
-                ) : (
-                    <>
+            ) : (
+                <>
                     <div className="tooltip">
                         <strong>Medals Earned:
-                            <img src={require('.././icons/info.png')} alt="info" className="info-icon"/>
-                             </strong>
+                            <img src={require('.././icons/info.png')} alt="info" className="info-icon" />
+                        </strong>
                         <span className="tooltiptext">
-                              you didn't earn any medals yet
+                            you didn't earn any medals yet
                         </span>
                     </div>
                     <div className="tooltip">
@@ -120,8 +120,8 @@ const Medals = ({output, setShareText}) => {
                             5 days in a row: 🏅
                         </span>
                     </div>
-                        </>
-                )}
+                </>
+            )}
         </div>
     );
 }
