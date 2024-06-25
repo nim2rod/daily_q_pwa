@@ -147,6 +147,8 @@ button {
   position: relative;
   display: inline-block;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
 }
 
 .tooltip .tooltiptext {
@@ -186,6 +188,8 @@ button {
 .tooltip-io {
   position: relative;
   display: inline-block;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
 }
 
 .io {
