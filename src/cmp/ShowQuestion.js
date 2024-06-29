@@ -38,9 +38,9 @@ const ShowQuestion = () => {
                             {(typeof (test.input[0]) === 'object' && test.input[0] !== null) ? (JSON.stringify(test.input[0])) : (test.input[0])}
                             <span className="io-label">Output:</span>
                             {(typeof (test.output) === 'object' && test.output !== null) ? (JSON.stringify(test.output)) : (test.output)}
+                            {JSON.stringify(test.output)}
+                            {/* <br></br> */}
                             <br></br>
-                            {/* {JSON.stringify(test.input)}
-                            <br></br> */}
                         </span>
                     ))}
                 </span>
