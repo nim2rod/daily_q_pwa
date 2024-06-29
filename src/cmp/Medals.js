@@ -113,7 +113,7 @@ const Medals = ({ output, setShareText }) => {
                         </span>
                     </div>
                     <div className="tooltip">
-                        <span >Leran more 💡</span>
+                        <span >Learn more 💡</span>
                         <span className="tooltiptext">
                             Earn medals by solving questions:<br />
                             3 days in a row: 🥉 <br />

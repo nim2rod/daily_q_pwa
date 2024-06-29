@@ -8,9 +8,9 @@ const ShowQuestion = () => {
     //GET Qeustion:
     useEffect(() => {
         console.log('process.env.URL: ', process.env.URL)
-        // axios.get('http://localhost:3030/daily-question')
-        // axios.get('https://daily-q-server.vercel.app/daily-question')
-        axios.get(`${process.env.REACT_APP_URL}/daily-question`)
+        axios.get('http://localhost:3030/daily-question')
+            // axios.get('https://daily-q-server.vercel.app/daily-question')
+            // axios.get(`${process.env.REACT_APP_URL}/daily-question`)
             .then(res => {
                 console.log('res.data: ', res.data)
                 setQuestion(res.data.question)
@@ -34,11 +34,13 @@ const ShowQuestion = () => {
                 <span className="tooltiptext-io">
                     {inOut.slice(0, 3).map((test, index) => (
                         < span key={index} >
-                            {/* <span className="io-label">Input:</span> {JSON.stringify(test.input)} */}
-                            <span className="io-label">Input:</span> {test.input}
-                            {/* <span className="io-label">Output:</span> {test.output} */}
-                            <span className="io-label">Output:</span> {JSON.stringify(test.output)}
+                            <span className="io-label">Input:</span>
+                            {(typeof (test.input[0]) === 'object' && test.input[0] !== null) ? (JSON.stringify(test.input[0])) : (test.input[0])}
+                            <span className="io-label">Output:</span>
+                            {(typeof (test.output) === 'object' && test.output !== null) ? (JSON.stringify(test.output)) : (test.output)}
                             <br></br>
+                            {/* {JSON.stringify(test.input)}
+                            <br></br> */}
                         </span>
                     ))}
                 </span>
