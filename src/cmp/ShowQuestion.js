@@ -8,9 +8,9 @@ const ShowQuestion = () => {
     //GET Qeustion:
     useEffect(() => {
         console.log('process.env.URL: ', process.env.URL)
-        axios.get('http://localhost:3030/daily-question')
-            // axios.get('https://daily-q-server.vercel.app/daily-question')
-            // axios.get(`${process.env.REACT_APP_URL}/daily-question`)
+        // axios.get('http://localhost:3030/daily-question')
+        // axios.get('https://daily-q-server.vercel.app/daily-question')
+        axios.get(`${process.env.REACT_APP_URL}/daily-question`)
             .then(res => {
                 console.log('res.data: ', res.data)
                 setQuestion(res.data.question)
