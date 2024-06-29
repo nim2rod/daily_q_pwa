@@ -34,8 +34,10 @@ const ShowQuestion = () => {
                 <span className="tooltiptext-io">
                     {inOut.slice(0, 3).map((test, index) => (
                         < span key={index} >
-                            <span className="io-label">Input:</span> {JSON.stringify(test.input)}
-                            <span className="io-label">Output:</span> {test.output}
+                            {/* <span className="io-label">Input:</span> {JSON.stringify(test.input)} */}
+                            <span className="io-label">Input:</span> {test.input}
+                            {/* <span className="io-label">Output:</span> {test.output} */}
+                            <span className="io-label">Output:</span> {JSON.stringify(test.output)}
                             <br></br>
                         </span>
                     ))}
