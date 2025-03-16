@@ -7,14 +7,14 @@ const Medals = ({ output, setShareText }) => {
     const [lastDateSolved, setLastDateSolved] = useState('')
 
     const getCurrentDate = (offset = 0) => {
-        const date = new Date();
-        date.setDate(date.getDate() + offset);
-        return date.toISOString().split('T')[0];
-    };
+        const date = new Date()
+        date.setDate(date.getDate() + offset)
+        return date.toISOString().split('T')[0]
+    }
 
     const loadDataFromStorage = () => { // Load from l-storage
-        const streak = localStorage.getItem('streak');
-        const lastSolvedDate = localStorage.getItem('lastSolvedDate');
+        const streak = localStorage.getItem('streak')
+        const lastSolvedDate = localStorage.getItem('lastSolvedDate')
         const medals = JSON.parse(localStorage.getItem('medals')) || []
 
         // check:
@@ -22,23 +22,23 @@ const Medals = ({ output, setShareText }) => {
         //     streak: 2,
         //     lastSolvedDate: '2024-06-14',
         //     medals: []
-        // };
+        // }
 
         return {
             streak: streak ? parseInt(streak, 10) : 0,
             lastSolvedDate: lastSolvedDate || '',
             medals
-        };
-    };
+        }
+    }
 
     const saveDataToStorage = (streak, date, medals) => { // Set to l-storage
-        localStorage.setItem('streak', streak);
-        localStorage.setItem('lastSolvedDate', date);
+        localStorage.setItem('streak', streak)
+        localStorage.setItem('lastSolvedDate', date)
         localStorage.setItem('medals', JSON.stringify(medals))
-    };
+    }
 
     const setDataWhenMount = useCallback(() => {
-        const { streak, lastSolvedDate, medals } = loadDataFromStorage();
+        const { streak, lastSolvedDate, medals } = loadDataFromStorage()
         setStreak(streak)
         setMedals(medals)
         setLastDateSolved(lastSolvedDate)
@@ -46,53 +46,53 @@ const Medals = ({ output, setShareText }) => {
     }, [])
 
     const updateStreakAndMedals = useCallback(() => {
-        const currentDate = getCurrentDate();
-        console.log('Checking streak and medals:', { lastDateSolved, currentDate });
+        const currentDate = getCurrentDate()
+        console.log('Checking streak and medals:', { lastDateSolved, currentDate })
 
         if (lastDateSolved === currentDate) { // today allready solved - not need to di anything.
             console.log('already solved today')
             // Update share text
             if (streak === 1) {
-                setShareText(`I just solved today's coding question on Daily Q!\nOnly ${output.solvedCount} solved today`);
+                setShareText(`I just solved today's coding question on Daily Q!\nOnly ${output.solvedCount} solved today`)
             } else {
-                setShareText(`I just solved today's coding question on Daily Q!\n${streak} days in a row!\nOnly ${output.solvedCount} solved today`);
+                setShareText(`I just solved today's coding question on Daily Q!\n${streak} days in a row!\nOnly ${output.solvedCount} solved today`)
             }
             return
         } else {
             console.log('solve first time today')
-            const newStreak = lastDateSolved === getCurrentDate(-1) ? streak + 1 : 1;
-            let newMedals = [...medals]; // []
+            const newStreak = lastDateSolved === getCurrentDate(-1) ? streak + 1 : 1
+            let newMedals = [...medals] // []
 
             if ((newStreak % 5) === 0) {
-                newMedals.push('🏅');
+                newMedals.push('🏅')
             } else if ((newStreak % 5) === 3) {
-                newMedals.push('🥉');
+                newMedals.push('🥉')
             }
 
-            setStreak(newStreak); // 1 
-            setMedals(newMedals); // []
+            setStreak(newStreak) // 1 
+            setMedals(newMedals) // []
             setLastDateSolved(currentDate)
-            saveDataToStorage(newStreak, currentDate, newMedals); //1 ,today, []
-            console.log('Updated streak and medals:', { newStreak, newMedals, currentDate });
+            saveDataToStorage(newStreak, currentDate, newMedals) //1 ,today, []
+            console.log('Updated streak and medals:', { newStreak, newMedals, currentDate })
 
             // Update share text
             if (newStreak === 1) {
-                setShareText(`I just solved today's coding question on Daily Q!\nOnly ${output.solvedCount} solved today!`);
+                setShareText(`I just solved today's coding question on Daily Q!\nOnly ${output.solvedCount} solved today!`)
             } else {
-                setShareText(`I just solved today's coding question on Daily Q!\n${newStreak} days in a row!\nOnly ${output.solvedCount} solved today!`);
+                setShareText(`I just solved today's coding question on Daily Q!\n${newStreak} days in a row!\nOnly ${output.solvedCount} solved today!`)
             }
         }
-    }, [lastDateSolved, medals, streak, setShareText]);
+    }, [lastDateSolved, medals, streak, setShareText])
 
     useEffect(() => {
-        setDataWhenMount();
-    }, [setDataWhenMount]);
+        setDataWhenMount()
+    }, [setDataWhenMount])
 
     useEffect(() => {
         if (output && output.Passed) {
-            updateStreakAndMedals();
+            updateStreakAndMedals()
         }
-    }, [output, updateStreakAndMedals]);
+    }, [output, updateStreakAndMedals])
 
     return (
         <div className="medalsCmp">
@@ -123,7 +123,7 @@ const Medals = ({ output, setShareText }) => {
                 </>
             )}
         </div>
-    );
+    )
 }
 
 export default Medals
