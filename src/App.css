@@ -33,6 +33,7 @@
   top: -1%;
   font-size: 1.2em;
   -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
 }
 
 .js-icon {
