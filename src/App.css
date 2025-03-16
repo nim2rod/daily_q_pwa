@@ -211,13 +211,11 @@ button {
   width: fit-content;
   background-color: #555;
   color: #fff;
-  text-align: center;
+  text-align: left;
   border-radius: 6px;
   padding: 5px;
   position: absolute;
   z-index: 1;
-  /* bottom: 125%; */
-  /* left: 50%; */
   bottom: -140%;
   left: 31%;
   margin-left: -80px;
@@ -236,6 +234,7 @@ button {
   margin-bottom: 4px;
   padding: 5px;
   font-weight: 500;
+  color: #c3c3c3;
 }
 
 
