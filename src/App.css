@@ -7,7 +7,7 @@
   pointer-events: none;
 }
 
-.submit-btn{
+.submit-btn {
   font-size: 1.3em;
   color: white;
   background-color: #a2a2a2;
@@ -50,15 +50,14 @@
 .q_m_wrapper {
   display: flex;
   flex-direction: column;
-  /* gap: 16px; */
   font-size: 1.2em;
 }
 
 /* Editor */
 .CodeMirror {
-  /* border: solid 2px grey; */
   text-align: justify;
   font-size: 1.6em;
+  height: 300px;
 }
 
 .theme-editor-choose {
@@ -272,7 +271,8 @@
   margin-top: 10px;
 }
 
-.results-table th, .results-table td {
+.results-table th,
+.results-table td {
   border: 1px solid #ddd;
   padding: 8px;
   text-align: left;
