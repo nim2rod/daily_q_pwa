@@ -7,7 +7,7 @@
   pointer-events: none;
 }
 
-button {
+.submit-btn{
   font-size: 1.3em;
   color: white;
   background-color: #a2a2a2;
@@ -17,6 +17,14 @@ button {
   cursor: pointer;
   padding: 5px;
   margin: 10px;
+}
+
+.submit-btn:hover {
+  background-color: #7a7a7a;
+}
+
+.submit-btn:active {
+  background-color: #535252;
 }
 
 .share_header {

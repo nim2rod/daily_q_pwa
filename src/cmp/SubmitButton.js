@@ -22,14 +22,14 @@ const SubmitButton = ({ code, setOutput, userId }) => {
         axios.post(`${process.env.REACT_APP_URL}/submit-code`, { code, userId })
             .then(response => {
                 // console.log('response.data: ', response.data)
-                setOutput(response.data);
+                setOutput(response.data)
             })
             .catch(error => {
-                setOutput([`Error: ${error.message}`]);
-            });
-    };
+                setOutput([`Error: ${error.message}`])
+            })
+    }
     return (
-        <button onClick={handleSubmit}>Submit</button>
+        <button className='submit-btn' onClick={handleSubmit}>Submit</button>
     )
 }
 
