@@ -7,6 +7,7 @@ import 'codemirror/mode/javascript/javascript'
 import 'codemirror/theme/material.css'
 import 'codemirror/theme/dracula.css'
 import 'codemirror/theme/eclipse.css'
+import resize from '../icons/resize.svg'
 
 const CodeEditor = ({ code, setCode, editorTheme }) => {
     useEffect(() => {
@@ -19,17 +20,20 @@ const CodeEditor = ({ code, setCode, editorTheme }) => {
     }, [code])
 
     return (
-        <CodeMirror
-            value={code}
-            options={{
-                mode: 'javascript',
-                theme: editorTheme,
-                lineNumbers: true
-            }}
-            onBeforeChange={(editor, data, value) => {
-                setCode(value)
-            }}
-        />
+        <div className='editor-wrapper' style={{position: 'relative'}}>
+            <CodeMirror
+                value={code}
+                options={{
+                    mode: 'javascript',
+                    theme: editorTheme,
+                    lineNumbers: true
+                }}
+                onBeforeChange={(editor, data, value) => {
+                    setCode(value)
+                }}
+            />
+            <img src={resize} alt=""/>
+        </div>
     )
 }
 
