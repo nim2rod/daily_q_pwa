@@ -45,7 +45,7 @@ function App() {
   const changeEditorTheme = (theme) => setEditorTheme(theme);
 
 
-  return (
+  return ( 
     <div className="App">
       <ShareBtn />
       {/* <h1 className="headline">The Daily Question:</h1> */}

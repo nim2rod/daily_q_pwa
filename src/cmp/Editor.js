@@ -7,8 +7,6 @@ import 'codemirror/mode/javascript/javascript'
 import 'codemirror/theme/material.css'
 import 'codemirror/theme/dracula.css'
 import 'codemirror/theme/eclipse.css'
-// import 'codemirror/theme/tokyo-night-day.css'
-// import 'codemirror/theme/quietlight.css'
 
 const CodeEditor = ({ code, setCode, editorTheme }) => {
     useEffect(() => {
@@ -26,7 +24,6 @@ const CodeEditor = ({ code, setCode, editorTheme }) => {
             options={{
                 mode: 'javascript',
                 theme: editorTheme,
-                // theme: 'dracula',
                 lineNumbers: true
             }}
             onBeforeChange={(editor, data, value) => {
