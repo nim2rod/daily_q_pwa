@@ -48,7 +48,8 @@ function App() {
   return (
     <div className="App">
       <ShareBtn />
-      <h1 className="headline">The Daily Question:</h1>
+      {/* <h1 className="headline">The Daily Question:</h1> */}
+      <div className="headline">The Daily Question:</div>
       {output && output.Results && <Results output={output} />}
 
       {isPassed && (

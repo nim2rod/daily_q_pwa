@@ -7,6 +7,12 @@
   pointer-events: none;
 }
 
+.headline {
+  padding: 5px;
+  font-size: larger;
+  font-weight: 200;
+}
+
 .submit-btn {
   font-size: 1.3em;
   color: white;
@@ -28,9 +34,6 @@
 }
 
 .share_header {
-  position: absolute;
-  left: 4%;
-  top: -1%;
   font-size: 1.2em;
   -webkit-tap-highlight-color: transparent;
   cursor: pointer;
@@ -38,13 +41,16 @@
 
 .js-icon {
   width: 24px;
-  position: absolute;
-  top: 2%;
-  right: 3%;
+  height: fit-content;
+  align-self: center;
 }
 
-.headline {
-  margin-top: 35px;
+.top-header {
+  display: flex;
+  justify-content: space-between;
+  height: 40px;
+  align-items: center;
+  padding-inline: 10px;
 }
 
 .q_m_wrapper {
