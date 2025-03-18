@@ -38,8 +38,8 @@ const Results = ({ output }) => {
                             {Results.map((test, index) => (
                                 <tr key={index}>
                                     <td>{JSON.stringify(test.input)}</td>
-                                    <td>{test.output}</td>
-                                    <td>{test.result}</td>
+                                    <td>{JSON.stringify(test.output)}</td>
+                                    <td>{JSON.stringify(test.result)}</td>
                                     <td style={{textAlign:'center'}}>
                                         <span className={test.passed ? 'pass-badge' : 'fail-badge'}>
                                             {test.passed ? '✅ ' : '❌ '}
