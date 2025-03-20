@@ -39,7 +39,6 @@ const CodeEditor = ({ code, setCode, editorTheme, isEditorSpread, setIsEditorSpr
                 onBeforeChange={(editor, data, value) => {
                     setCode(value)
                 }}
-                // style={{ height: '500px' }}
                 editorDidMount={(editor) => {
                     editorRef.current = editor; // Save editor instance
                     editor.setSize("100%", isEditorSpread ? "500px" : "300px");

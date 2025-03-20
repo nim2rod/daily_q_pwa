@@ -36,16 +36,37 @@ const Results = ({ output }) => {
                         </thead>
                         <tbody>
                             {Results.map((test, index) => (
-                                <tr key={index}>
-                                    <td>{Array.isArray(test.input) ? JSON.stringify(test.input.flat()) : JSON.stringify(test.input)}</td>
-                                    <td>{typeof test.output === 'boolean' || typeof test.output === 'string' ? test.output.toString() : JSON.stringify(test.output.flat())}</td>
-                                    <td>{typeof test.result === 'boolean' || typeof test.result === 'string' ? test.result.toString() : JSON.stringify(test.result.flat())}</td>
-                                    <td style={{ textAlign: 'center' }}>
-                                        <span className={test.passed ? 'pass-badge' : 'fail-badge'}>
-                                            {test.passed ? '✅ ' : '❌ '}
-                                        </span>
-                                    </td>
-                                </tr>
+                               <tr key={index}>
+                               <td>
+                                   {Array.isArray(test.input) 
+                                       ? JSON.stringify(test.input.flat()) 
+                                       : JSON.stringify(test.input || "N/A")}
+                               </td>
+                               <td>
+                                   {test.output !== undefined && test.output !== null 
+                                       ? (typeof test.output === 'boolean' || typeof test.output === 'string' 
+                                           ? test.output.toString() 
+                                           : Array.isArray(test.output) 
+                                               ? JSON.stringify(test.output.flat()) 
+                                               : JSON.stringify(test.output)) 
+                                       : "N/A"}
+                               </td>
+                               <td>
+                                   {test.result !== undefined && test.result !== null 
+                                       ? (typeof test.result === 'boolean' || typeof test.result === 'string' 
+                                           ? test.result.toString() 
+                                           : Array.isArray(test.result) 
+                                               ? JSON.stringify(test.result.flat()) 
+                                               : JSON.stringify(test.result)) 
+                                       : "N/A"}
+                               </td>
+                               <td style={{ textAlign: 'center' }}>
+                                   <span className={test.passed ? 'pass-badge' : 'fail-badge'}>
+                                       {test.passed ? '✅ ' : '❌ '}
+                                   </span>
+                               </td>
+                           </tr>
+                           
                             ))}
                         </tbody>
                     </table>

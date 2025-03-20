@@ -49,10 +49,13 @@ function App() {
   return (
     <div className="App">
       <ShareBtn />
-      {/* <h1 className="headline">The Daily Question:</h1> */}
+
       <div className="headline">The Daily Question:</div>
+      
+      {/* Results: */}
       {output && output.Results && <Results output={output} />}
 
+      
       {isPassed && (
         <SocialShareButtons
           url="https://dailyqpwa-nimrod-devs-projects.vercel.app/" // Replace with your web app URL
@@ -66,7 +69,7 @@ function App() {
         )}
       </div>
 
-      {/* Editor: */}
+      {/* Editors: */}
       {editorProvider === 'mirror' ? (
         <CodeEditorMirror 
           code={code} 
@@ -88,7 +91,8 @@ function App() {
         <div onClick={() => { changeEditor('mirror'); changeEditorTheme('eclipse'); }} >⚪️</div>
         <div onClick={() => { changeEditor('mirror'); changeEditorTheme('dracula'); }} >🟣</div>
       </div>
-
+         
+      {/* Submit Button: */}
       <SubmitBtn code={code} setOutput={setOutput} userId={userLog._id || ''} />
     </div>
   );
