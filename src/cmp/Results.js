@@ -37,10 +37,10 @@ const Results = ({ output }) => {
                         <tbody>
                             {Results.map((test, index) => (
                                 <tr key={index}>
-                                    <td>{JSON.stringify(test.input)}</td>
-                                    <td>{JSON.stringify(test.output)}</td>
-                                    <td>{JSON.stringify(test.result)}</td>
-                                    <td style={{textAlign:'center'}}>
+                                    <td>{Array.isArray(test.input) ? JSON.stringify(test.input.flat()) : JSON.stringify(test.input)}</td>
+                                    <td>{typeof test.output === 'boolean' || typeof test.output === 'string' ? test.output.toString() : JSON.stringify(test.output.flat())}</td>
+                                    <td>{typeof test.result === 'boolean' || typeof test.result === 'string' ? test.result.toString() : JSON.stringify(test.result.flat())}</td>
+                                    <td style={{ textAlign: 'center' }}>
                                         <span className={test.passed ? 'pass-badge' : 'fail-badge'}>
                                             {test.passed ? '✅ ' : '❌ '}
                                         </span>
@@ -49,6 +49,7 @@ const Results = ({ output }) => {
                             ))}
                         </tbody>
                     </table>
+
 
                 </div>
             )}
