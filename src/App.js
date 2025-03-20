@@ -93,6 +93,8 @@ function App() {
           editorTheme={editorTheme}
           isEditorSpread={isEditorSpread}
           setIsEditorSpread={setIsEditorSpread}
+          isEditorFullScreen={isEditorFullScreen}
+          setIsEditorFullScreen={setIsEditorFullScreen}
         />
       )}
 
@@ -109,7 +111,7 @@ function App() {
       {/* Submit Button: */}
       <SubmitBtn code={code} setOutput={setOutput} userId={userLog._id || ''} />
     </div>
-  );
+  )
 }
 
 export default App;
