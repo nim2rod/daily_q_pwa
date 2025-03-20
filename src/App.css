@@ -64,6 +64,7 @@
   text-align: justify;
   font-size: 1.6em;
   height: 500px;
+  border: solid 1px #d29898;
 }
 
 .theme-editor-choose {
