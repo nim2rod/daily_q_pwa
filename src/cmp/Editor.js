@@ -16,7 +16,7 @@ const CodeEditor = ({
     setCode,
     editorTheme,
     isEditorSpread,
-    setIsEditorSpread ,
+    setIsEditorSpread,
     isEditorFullScreen,
     setIsEditorFullScreen
 }) => {
@@ -26,13 +26,13 @@ const CodeEditor = ({
     useEffect(() => {
         if (editorRef.current) {
             let newHeight = "300px"; // Default height
-    
+
             if (isEditorFullScreen) {
                 newHeight = "100vh"; // Full screen mode
             } else if (isEditorSpread) {
                 newHeight = "500px"; // Expanded mode
             }
-    
+
             editorRef.current.setSize("100%", newHeight);
         }
     }, [isEditorSpread, isEditorFullScreen]);  // 🔥 Depend on both states    
@@ -63,11 +63,19 @@ const CodeEditor = ({
                     editor.setSize("100%", isEditorSpread ? "500px" : "300px");
                 }}
             />
-            <img src={resize} alt="" onClick={() => setIsEditorSpread(!isEditorSpread)} />
-            <img 
-               src={resizeFs} alt="" 
-               onClick={() => setIsEditorFullScreen(!isEditorFullScreen)} 
-               style={{top:'50px', padding:'5px', width:'35px'}} 
+            <img
+                src={resize} alt=""
+                onClick={() => {
+                    if (!isEditorFullScreen) {  // Prevent toggle if full-screen is active
+                        setIsEditorSpread(prev => !prev);
+                    }
+                }}
+                style={{ backgroundColor: isEditorFullScreen && 'black' }}
+            />
+            <img
+                src={resizeFs} alt=""
+                onClick={() => setIsEditorFullScreen(!isEditorFullScreen)}
+                style={{ top: '50px', padding: '5px', width: '35px' }}
             />
         </div>
     )
