@@ -19,6 +19,7 @@ function App() {
   const [editorProvider, setEditorProvider] = useState('mirror')
   const [editorTheme, setEditorTheme] = useState('material')
   const [isEditorSpread, setIsEditorSpread] = useState(false)
+  const [isEditorFullScreen, setIsEditorFullScreen] = useState(false)
 
   useEffect(() => {
     if (output && output.Passed !== undefined) {
@@ -48,41 +49,54 @@ function App() {
 
   return (
     <div className="App">
-      <ShareBtn />
+      {!isEditorSpread && !isEditorFullScreen && <ShareBtn />}
 
-      <div className="headline">The Daily Question:</div>
-      
+      {!isEditorSpread && !isEditorFullScreen && (
+        <div className="headline">The Daily Question:</div>
+      )}
+
       {/* Results: */}
       {output && output.Results && <Results output={output} />}
 
-      
+
       {isPassed && (
         <SocialShareButtons
           url="https://dailyqpwa-nimrod-devs-projects.vercel.app/" // Replace with your web app URL
           text={shareText}
         />
       )}
+
+      {/* Show Q +  Medals: */}
       <div className="q_m_wrapper">
-        <ShowQuestion />
-        {!isEditorSpread &&(
+        {!isEditorFullScreen && <ShowQuestion />}
+        {/* <ShowQuestion /> */}
+        {!isEditorSpread && !isEditorFullScreen && (
           <Medals output={output} setShareText={handleSetShareText} />
         )}
       </div>
 
       {/* Editors: */}
       {editorProvider === 'mirror' ? (
-        <CodeEditorMirror 
-          code={code} 
-          setCode={setCode} 
-          editorTheme={editorTheme} 
+        <CodeEditorMirror
+          code={code}
+          setCode={setCode}
+          editorTheme={editorTheme}
+          isEditorSpread={isEditorSpread}
+          setIsEditorSpread={setIsEditorSpread}
+          isEditorFullScreen={isEditorFullScreen}
+          setIsEditorFullScreen={setIsEditorFullScreen}
+        />
+      ) : (
+        <CodeEditorMonaco
+          code={code}
+          setCode={setCode}
+          editorTheme={editorTheme}
           isEditorSpread={isEditorSpread}
           setIsEditorSpread={setIsEditorSpread}
         />
-      ) : (
-        <CodeEditorMonaco code={code} setCode={setCode} editorTheme={editorTheme} />
       )}
 
-       {/* Editor Buttons:  */}
+      {/* Editor Buttons:  */}
       <div className="theme-editor-choose">
         <img src={require('./icons/vs-black.png')} alt="info"
           style={{ width: 25 }}
@@ -91,7 +105,7 @@ function App() {
         <div onClick={() => { changeEditor('mirror'); changeEditorTheme('eclipse'); }} >⚪️</div>
         <div onClick={() => { changeEditor('mirror'); changeEditorTheme('dracula'); }} >🟣</div>
       </div>
-         
+
       {/* Submit Button: */}
       <SubmitBtn code={code} setOutput={setOutput} userId={userLog._id || ''} />
     </div>

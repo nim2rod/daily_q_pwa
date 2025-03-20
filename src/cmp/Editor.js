@@ -9,14 +9,31 @@ import 'codemirror/theme/dracula.css'
 import 'codemirror/theme/eclipse.css'
 import resize from '../icons/resize.svg'
 
-const CodeEditor = ({ code, setCode, editorTheme, isEditorSpread, setIsEditorSpread }) => {
+const CodeEditor = ({
+    code,
+    setCode,
+    editorTheme,
+    isEditorSpread,
+    setIsEditorSpread ,
+    isEditorFullScreen,
+    setIsEditorFullScreen
+}) => {
+
     const editorRef = useRef(null)
 
     useEffect(() => {
         if (editorRef.current) {
-            editorRef.current.setSize("100%", isEditorSpread ? "500px" : "300px");
+            let newHeight = "300px"; // Default height
+    
+            if (isEditorFullScreen) {
+                newHeight = "100vh"; // Full screen mode
+            } else if (isEditorSpread) {
+                newHeight = "500px"; // Expanded mode
+            }
+    
+            editorRef.current.setSize("100%", newHeight);
         }
-    }, [isEditorSpread])  // Runs when `isEditorSpread` changes
+    }, [isEditorSpread, isEditorFullScreen]);  // 🔥 Depend on both states    
 
     useEffect(() => {
         const savedCode = getFromLocal()
@@ -45,6 +62,11 @@ const CodeEditor = ({ code, setCode, editorTheme, isEditorSpread, setIsEditorSpr
                 }}
             />
             <img src={resize} alt="" onClick={() => setIsEditorSpread(!isEditorSpread)} />
+            <img 
+               src={resize} alt="" 
+               onClick={() => setIsEditorFullScreen(!isEditorFullScreen)} 
+               style={{top:'50px'}} 
+            />
         </div>
     )
 }
