@@ -14,10 +14,11 @@ function App() {
   const [code, setCode] = useState('');
   const [output, setOutput] = useState('')
   const [isPassed, setIsPassed] = useState(false)
-  const [shareText, setShareText] = useState('');
+  const [shareText, setShareText] = useState('')
   const [userLog, setUserLog] = useState('guest')
   const [editorProvider, setEditorProvider] = useState('mirror')
-  const [editorTheme, setEditorTheme] = useState('material');
+  const [editorTheme, setEditorTheme] = useState('material')
+  const [isEditorSpread, setIsEditorSpread] = useState(false)
 
   useEffect(() => {
     if (output && output.Passed !== undefined) {
@@ -45,7 +46,7 @@ function App() {
   const changeEditorTheme = (theme) => setEditorTheme(theme);
 
 
-  return ( 
+  return (
     <div className="App">
       <ShareBtn />
       {/* <h1 className="headline">The Daily Question:</h1> */}
@@ -60,14 +61,25 @@ function App() {
       )}
       <div className="q_m_wrapper">
         <ShowQuestion />
-        <Medals output={output} setShareText={handleSetShareText} />
+        {!isEditorSpread &&(
+          <Medals output={output} setShareText={handleSetShareText} />
+        )}
       </div>
+
+      {/* Editor: */}
       {editorProvider === 'mirror' ? (
-        <CodeEditorMirror code={code} setCode={setCode} editorTheme={editorTheme} />
+        <CodeEditorMirror 
+          code={code} 
+          setCode={setCode} 
+          editorTheme={editorTheme} 
+          isEditorSpread={isEditorSpread}
+          setIsEditorSpread={setIsEditorSpread}
+        />
       ) : (
         <CodeEditorMonaco code={code} setCode={setCode} editorTheme={editorTheme} />
       )}
 
+       {/* Editor Buttons:  */}
       <div className="theme-editor-choose">
         <img src={require('./icons/vs-black.png')} alt="info"
           style={{ width: 25 }}
