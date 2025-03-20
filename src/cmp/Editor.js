@@ -8,6 +8,8 @@ import 'codemirror/theme/material.css'
 import 'codemirror/theme/dracula.css'
 import 'codemirror/theme/eclipse.css'
 import resize from '../icons/resize.svg'
+import resizeFs from '../icons/resize-fs.svg'
+
 
 const CodeEditor = ({
     code,
@@ -63,9 +65,9 @@ const CodeEditor = ({
             />
             <img src={resize} alt="" onClick={() => setIsEditorSpread(!isEditorSpread)} />
             <img 
-               src={resize} alt="" 
+               src={resizeFs} alt="" 
                onClick={() => setIsEditorFullScreen(!isEditorFullScreen)} 
-               style={{top:'50px'}} 
+               style={{top:'50px', padding:'5px', width:'35px'}} 
             />
         </div>
     )
