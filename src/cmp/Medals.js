@@ -45,6 +45,7 @@ const Medals = ({ output, setShareText }) => {
         console.log('Data loaded from storage')
     }, [])
 
+
     const updateStreakAndMedals = useCallback(() => {
         const currentDate = getCurrentDate()
         console.log('Checking streak and medals:', { lastDateSolved, currentDate })
@@ -82,6 +83,7 @@ const Medals = ({ output, setShareText }) => {
                 setShareText(`I just solved today's coding question on Daily Q!\n${newStreak} days in a row!\nOnly ${output.solvedCount} solved today!`)
             }
         }
+            // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [lastDateSolved, medals, streak, setShareText])
 
     useEffect(() => {

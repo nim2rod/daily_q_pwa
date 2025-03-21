@@ -40,7 +40,7 @@ const CodeEditor = ({
     useEffect(() => {
         const savedCode = getFromLocal()
         if (savedCode) setCode(savedCode)
-    }, [])
+    }, [setCode])
 
     useEffect(() => {
         setToLocal(code)

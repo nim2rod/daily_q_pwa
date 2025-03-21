@@ -1,5 +1,5 @@
 // src/cmp/SocialShareButtons.js
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     FacebookShareButton,
     TwitterShareButton,
@@ -16,36 +16,36 @@ const SocialShareButtons = ({ url, text }) => {
     const [showModal, setShowModal] = useState(false)
 
     useEffect(() => {
-    console.log('social cmp open!')
-    console.log('text: ',text)
-    navigator.clipboard.writeText(text).then(() => {
-        // alert("The content is copied, you can now share it on social (Ctrl+V)");
-        setShowModal(true)
-        setTimeout(() => {
-            setShowModal(false)
-        }, 1500);
-      }, (err) => {
-        console.error('Failed to copy: ', err);
-      });
+        console.log('social cmp open!')
+        console.log('text: ', text)
+        navigator.clipboard.writeText(text).then(() => {
+            // alert("The content is copied, you can now share it on social (Ctrl+V)");
+            setShowModal(true)
+            setTimeout(() => {
+                setShowModal(false)
+            }, 1500);
+        }, (err) => {
+            console.error('Failed to copy: ', err);
+        });
     }, [text])
-    
-    const handleShareClick =(()=>{
+
+    const handleShareClick = (() => {
         console.log('content copy, you can past it on social!')
         navigator.clipboard.writeText(text).then(() => {
             alert("The content is copied, you can now share it on social (Ctrl+V)");
-          }, (err) => {
+        }, (err) => {
             console.error('Failed to copy: ', err);
-          });
+        });
     })
 
 
-        const handleShareOptions = (()=>{
-            navigator.share({
-              title: "Share dailyQ app",
-              text: text,
-              url: 'https://dailyqpwa-nimrod-devs-projects.vercel.app/',
-            });
-          })
+    const handleShareOptions = (() => {
+        navigator.share({
+            title: "Share dailyQ app",
+            text: text,
+            url: 'https://dailyqpwa-nimrod-devs-projects.vercel.app/',
+        });
+    })
 
 
     return (
@@ -58,15 +58,15 @@ const SocialShareButtons = ({ url, text }) => {
                 <TwitterShareButton url={url} title={text}>
                     <XIcon size={32} round={true} />
                 </TwitterShareButton>
-                <LinkedinShareButton url={url} title={text} summary={text} source={url} source="Daily Q" >
+                <LinkedinShareButton url={url} title={text} summary={text} source={url} >
                     <LinkedinIcon size={32} round={true} />
                 </LinkedinShareButton>
                 <WhatsappShareButton url={url} title={text}>
-                    <WhatsappIcon size={32} round={true}/>
+                    <WhatsappIcon size={32} round={true} />
                 </WhatsappShareButton>
                 <p onClick={handleShareOptions}>•••</p>
             </div>
-                <Modal show ={showModal}/>
+            <Modal show={showModal} />
         </div>
     );
 };

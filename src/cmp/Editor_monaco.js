@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect } from 'react'
 import Editor from '@monaco-editor/react'
 import { getFromLocal, setToLocal } from '../utils/localStorage'
 import resize from '../icons/resize.svg'
@@ -11,12 +11,10 @@ const Editor_monaco = ({
     isEditorFullScreen, setIsEditorFullScreen
 }) => {
 
-    const editorRef = useRef(null)
-
     useEffect(() => {
         const savedCode = getFromLocal()
         if (savedCode) setCode(savedCode)
-    }, [])
+    }, [setCode])
 
     useEffect(() => {
         setToLocal(code)

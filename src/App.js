@@ -15,7 +15,7 @@ function App() {
   const [output, setOutput] = useState('')
   const [isPassed, setIsPassed] = useState(false)
   const [shareText, setShareText] = useState('')
-  const [userLog, setUserLog] = useState('guest')
+  const [userLog] = useState('guest')
   const [editorProvider, setEditorProvider] = useState('mirror')
   const [editorTheme, setEditorTheme] = useState('material')
   const [isEditorSpread, setIsEditorSpread] = useState(false)
@@ -35,17 +35,16 @@ function App() {
     setShareText(text);
   };
 
-  const handleShareApp = (() => {
-    navigator.share({
-      title: "Share dailyQ app",
-      text: "Check out this awesome app!",
-      url: 'https://dailyqpwa-nimrod-devs-projects.vercel.app/',
-    });
-  })
+  // const handleShareApp = (() => {
+  //   navigator.share({
+  //     title: "Share dailyQ app",
+  //     text: "Check out this awesome app!",
+  //     url: 'https://dailyqpwa-nimrod-devs-projects.vercel.app/',
+  //   })
+  // })
 
   const changeEditor = (val) => setEditorProvider(val)
   const changeEditorTheme = (theme) => setEditorTheme(theme);
-
 
   return (
     <div className="App">
