@@ -56,7 +56,7 @@ function App() {
       )}
 
       {/* Results: */}
-      {output && output.Results && <Results output={output} />}
+      {!isEditorFullScreen && output && output.Results && <Results output={output} />}
 
 
       {isPassed && (
@@ -109,7 +109,7 @@ function App() {
       </div>
 
       {/* Submit Button: */}
-      <SubmitBtn code={code} setOutput={setOutput} userId={userLog._id || ''} />
+      <SubmitBtn code={code} setOutput={setOutput} userId={userLog._id || ''} setIsEditorFullScreen={setIsEditorFullScreen} />
     </div>
   )
 }

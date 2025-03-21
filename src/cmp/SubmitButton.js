@@ -1,8 +1,9 @@
 import React from 'react'
 import axios from 'axios'
 
-const SubmitButton = ({ code, setOutput, userId }) => {
+const SubmitButton = ({ code, setOutput, userId, setIsEditorFullScreen }) => {
     const handleSubmit = () => {
+        setIsEditorFullScreen(false)
         // axios.post('http://localhost:3030/submit-code', { code })
 
         if (userId === '') {
