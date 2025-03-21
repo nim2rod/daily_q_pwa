@@ -1,5 +1,6 @@
 // src/cmp/Results.js
 import React from 'react'
+import {formatValue} from '../utils/formatVal'
 
 const Results = ({ output }) => {
     const { Passed, Results, solvedCount } = output
@@ -27,11 +28,7 @@ const Results = ({ output }) => {
                         <tbody>
                             {Results.map((test, index) => (
                                <tr key={index}>
-                               <td>
-                                   {Array.isArray(test.input) 
-                                       ? JSON.stringify(test.input.flat()) 
-                                       : JSON.stringify(test.input || "N/A")}
-                               </td>
+                               <td>{formatValue(test.input)}</td>
                                <td>
                                    {test.output !== undefined && test.output !== null 
                                        ? (typeof test.output === 'boolean' || typeof test.output === 'string' 

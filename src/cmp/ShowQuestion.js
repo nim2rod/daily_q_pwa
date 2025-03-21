@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import { formatValue } from '../utils/formatVal'
 
 const ShowQuestion = () => {
     const [question, setQuestion] = useState('')
@@ -35,7 +36,8 @@ const ShowQuestion = () => {
                     {inOut.slice(0, 3).map((test, index) => (
                         < span key={index} >
                             <span className="io-label">Input:</span>
-                            {(typeof (test.input[0]) === 'object' && test.input[0] !== null) ? (JSON.stringify(test.input[0])) : (test.input[0])}
+                            {/* {(typeof (test.input[0]) === 'object' && test.input[0] !== null) ? (JSON.stringify(test.input[0])) : (test.input[0])} */}
+                            <span>{formatValue(test.input)}</span>
                             <span className="io-label">Output:</span>
                             {((typeof (test.output) === 'boolean' || typeof (test.output) === 'object') && test.output !== null) ? (JSON.stringify(test.output)) : (test.output)}
                             <br></br>
