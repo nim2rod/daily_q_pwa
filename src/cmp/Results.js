@@ -15,16 +15,6 @@ const Results = ({ output }) => {
                 <div>
                     <h2>Sorry, your solution is incorrect. Try again!</h2>
                     <h3>Test Results:</h3>
-                    {/* <ul>
-                {Results.map((test, index) => (
-                    <li key={index}>
-                        <strong>Input:</strong> {JSON.stringify(test.input)} | 
-                        <strong>Expected Output:</strong> {test.output} | 
-                        <strong>Your Output:</strong> {test.result} | 
-                        <strong>Passed:</strong> {test.passed ? 'Yes' : 'No'}
-                    </li>
-                ))}
-            </ul> */}
                     <table className="results-table">
                         <thead>
                             <tr>

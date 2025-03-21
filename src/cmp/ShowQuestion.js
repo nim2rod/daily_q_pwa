@@ -39,8 +39,6 @@ const ShowQuestion = () => {
                             <span className="io-label">Output:</span>
                             {((typeof (test.output) === 'boolean' || typeof (test.output) === 'object') && test.output !== null) ? (JSON.stringify(test.output)) : (test.output)}
                             <br></br>
-                            {/* {JSON.stringify(test.output)} */}
-                            {/* <br></br> */}
                         </span>
                     ))}
                 </span>
