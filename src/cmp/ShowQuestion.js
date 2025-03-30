@@ -11,14 +11,17 @@ const ShowQuestion = () => {
 
     //GET Qeustion:
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_URL}/daily-question`)
-            .then(res => {
+        const fetchQuestion = async () => {
+            try {
+                const res = await axios.get(`${process.env.REACT_APP_URL}/daily-question`)
                 setQuestion(res.data.question)
                 setInOut(res.data.tests)
-            })
-            .catch(error => {
-                console.log('Error fetching the daily question:, error')
-            })
+            } catch (error) {
+                console.log('Error fetching the daily question:', error)
+            }
+        }
+
+        fetchQuestion()
     }, [])
 
     const handleExplain = async () => {
