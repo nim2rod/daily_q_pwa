@@ -29,15 +29,7 @@ function App() {
 
   const handleSetShareText = (text) => {
     setShareText(text);
-  };
-
-  // const handleShareApp = (() => {
-  //   navigator.share({
-  //     title: "Share dailyQ app",
-  //     text: "Check out this awesome app!",
-  //     url: 'https://dailyqpwa-nimrod-devs-projects.vercel.app/',
-  //   })
-  // })
+  }
 
   const changeEditor = (val) => setEditorProvider(val)
   const changeEditorTheme = (theme) => setEditorTheme(theme);
