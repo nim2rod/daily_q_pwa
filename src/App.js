@@ -17,7 +17,6 @@ function App() {
   const [shareText, setShareText] = useState('')
   const [userLog] = useState('guest')
   const [editorProvider, setEditorProvider] = useState('mirror')
-  // const [editorTheme, setEditorTheme] = useState('material')
   const [editorTheme, setEditorTheme] = useState('dracula')
   const [isEditorSpread, setIsEditorSpread] = useState(false)
   const [isEditorFullScreen, setIsEditorFullScreen] = useState(false)

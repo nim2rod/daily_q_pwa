@@ -16,10 +16,7 @@ const SocialShareButtons = ({ url, text }) => {
     const [showModal, setShowModal] = useState(false)
 
     useEffect(() => {
-        console.log('social cmp open!')
-        console.log('text: ', text)
         navigator.clipboard.writeText(text).then(() => {
-            // alert("The content is copied, you can now share it on social (Ctrl+V)");
             setShowModal(true)
             setTimeout(() => {
                 setShowModal(false)
@@ -30,7 +27,6 @@ const SocialShareButtons = ({ url, text }) => {
     }, [text])
 
     const handleShareClick = (() => {
-        console.log('content copy, you can past it on social!')
         navigator.clipboard.writeText(text).then(() => {
             alert("The content is copied, you can now share it on social (Ctrl+V)");
         }, (err) => {
