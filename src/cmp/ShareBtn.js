@@ -1,14 +1,21 @@
 import React from 'react'
 
 const ShareBtn = () => {
-  const handleShareApp = (() => {
-    navigator.share({
-      title: "Share dailyQ app",
-      text: "Check out this awesome app!",
-      url: 'https://dailyqpwa-nimrod-devs-projects.vercel.app/',
-    });
-  })
-
+  const handleShareApp = () => {
+    if (navigator.share) {
+      navigator.share({
+        title: "Share dailyQ app",
+        text: "Check out this awesome app!",
+        url: 'https://dailyqpwa-nimrod-devs-projects.vercel.app/',
+      }).catch((err) => {
+        if (err.name !== 'AbortError') {
+          console.error('Share failed:', err)
+        }
+      })
+    } else {
+      alert('Sharing is not supported on this browser.')
+    }
+  }
 
   return (
     <>
