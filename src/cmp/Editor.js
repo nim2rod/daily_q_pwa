@@ -33,7 +33,6 @@ const CodeEditor = ({
 
   useEffect(() => {
     const savedCode = getFromLocal()
-    console.log('savedCode', savedCode)
     if (savedCode) setCode(savedCode)
   }, [setCode])
 

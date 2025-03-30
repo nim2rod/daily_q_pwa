@@ -17,13 +17,6 @@ const Medals = ({ output, setShareText }) => {
         const lastSolvedDate = localStorage.getItem('lastSolvedDate')
         const medals = JSON.parse(localStorage.getItem('medals')) || []
 
-        // check:
-        // return {
-        //     streak: 2,
-        //     lastSolvedDate: '2024-06-14',
-        //     medals: []
-        // }
-
         return {
             streak: streak ? parseInt(streak, 10) : 0,
             lastSolvedDate: lastSolvedDate || '',
