@@ -21,7 +21,7 @@ const ShowQuestion = () => {
     }, [])
 
     const handleExplain = async () => {
-        console.log('handleExplain')
+        if (explanation) return
         setLoading(true)
         try {
             const res = await axios.post(`${process.env.REACT_APP_URL}/explain`, {
@@ -47,7 +47,7 @@ const ShowQuestion = () => {
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginInline: '10px' }}>
                 <div className="tooltip-io">
                     <span className='io' tabIndex="0">I/O</span>
-                    <span className="tooltiptext-io">
+                    <span className="tooltiptext-io" style={{ bottom: '-50%' }}>
                         {inOut.slice(0, 3).map((test, index) => (
                             < span key={index} >
                                 <span className="io-label">Input:</span>
@@ -61,8 +61,15 @@ const ShowQuestion = () => {
                     </span>
                 </div>
 
-                <div className='io' onClick={handleExplain}>
-                    {loading ? "Thinking..." : "Help"}
+                <div className="tooltip-io">
+                    <div className='io' onClick={handleExplain}>
+                        {loading ? "Thinking..." : "Help"}
+                    </div>
+                    {explanation && (
+                        <span className="tooltiptext-io" style={{ width: '300px', right: '0' }}>
+                            {explanation}
+                        </span>
+                    )}
                 </div>
             </div>
         </>

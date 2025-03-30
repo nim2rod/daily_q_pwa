@@ -218,6 +218,7 @@
   padding: 3px;
   border-radius: 4px;
   cursor: pointer;
+  height: 23px;
 }
 
 .tooltip-io span {
@@ -234,17 +235,11 @@
   padding: 5px;
   position: absolute;
   z-index: 1;
-  bottom: -50%;
-  margin-left: 40px;
+  margin-left: 20px;
   opacity: 0;
   transition: opacity 0.3s;
   font-size: medium;
 }
-
-/* .tooltip-io span:hover+.tooltiptext-io {
-  visibility: visible;
-  opacity: 1;
-} */
 
 .tooltip-io:hover .tooltiptext-io,
 .tooltip-io:focus-within .tooltiptext-io {
