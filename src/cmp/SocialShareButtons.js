@@ -20,18 +20,18 @@ const SocialShareButtons = ({ url, text }) => {
             setShowModal(true)
             setTimeout(() => {
                 setShowModal(false)
-            }, 1500);
+            }, 1500)
         }, (err) => {
-            console.error('Failed to copy: ', err);
-        });
+            console.error('Failed to copy: ', err)
+        })
     }, [text])
 
     const handleShareClick = (() => {
         navigator.clipboard.writeText(text).then(() => {
             alert("The content is copied, you can now share it on social (Ctrl+V)");
         }, (err) => {
-            console.error('Failed to copy: ', err);
-        });
+            console.error('Failed to copy: ', err)
+        })
     })
 
 

@@ -40,10 +40,8 @@ const Medals = ({ output, setShareText }) => {
 
     const updateStreakAndMedals = useCallback(() => {
         const currentDate = getCurrentDate()
-        console.log('Checking streak and medals:', { lastDateSolved, currentDate })
 
         if (lastDateSolved === currentDate) { // today allready solved - not need to di anything.
-            console.log('already solved today')
             // Update share text
             if (streak === 1) {
                 setShareText(`I just solved today's coding question on Daily Q!\nOnly ${output.solvedCount} solved today`)
@@ -52,7 +50,6 @@ const Medals = ({ output, setShareText }) => {
             }
             return
         } else {
-            console.log('solve first time today')
             const newStreak = lastDateSolved === getCurrentDate(-1) ? streak + 1 : 1
             let newMedals = [...medals] // []
 
@@ -66,7 +63,6 @@ const Medals = ({ output, setShareText }) => {
             setMedals(newMedals) // []
             setLastDateSolved(currentDate)
             saveDataToStorage(newStreak, currentDate, newMedals) //1 ,today, []
-            console.log('Updated streak and medals:', { newStreak, newMedals, currentDate })
 
             // Update share text
             if (newStreak === 1) {
