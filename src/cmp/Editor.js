@@ -75,7 +75,7 @@ const CodeEditor = ({
             <img
                 src={resizeFs} alt=""
                 onClick={() => setIsEditorFullScreen(!isEditorFullScreen)}
-                style={{ top: '50px', padding: '5px', width: '35px' }}
+                style={{ top: '140px', padding: '5px', width: '35px' }}
             />
         </div>
     )
