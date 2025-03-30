@@ -1,87 +1,131 @@
-// src/components/CodeEditor.js
 import React, { useEffect, useRef } from 'react'
+import {
+  EditorView,
+  keymap,
+  highlightSpecialChars,
+  drawSelection,
+  highlightActiveLine,
+  lineNumbers,
+  highlightActiveLineGutter
+} from '@codemirror/view'
+import { EditorState } from '@codemirror/state'
+import { defaultKeymap, history, historyKeymap } from '@codemirror/commands'
+import { javascript } from '@codemirror/lang-javascript'
+import { oneDark } from '@codemirror/theme-one-dark'
+import { dracula } from '@uiw/codemirror-theme-dracula'
+import { eclipse } from '@uiw/codemirror-theme-eclipse'
+
 import { getFromLocal, setToLocal } from '../utils/localStorage'
-import { Controlled as CodeMirror } from 'react-codemirror2'
-import 'codemirror/lib/codemirror.css'
-import 'codemirror/mode/javascript/javascript'
-import 'codemirror/theme/material.css'
-import 'codemirror/theme/dracula.css'
-import 'codemirror/theme/eclipse.css'
 import resize from '../icons/resize.svg'
 import resizeFs from '../icons/resize-fs.svg'
 
-
 const CodeEditor = ({
-    code,
-    setCode,
-    editorTheme,
-    isEditorSpread,
-    setIsEditorSpread,
-    isEditorFullScreen,
-    setIsEditorFullScreen
+  code,
+  setCode,
+  editorTheme,
+  isEditorSpread,
+  setIsEditorSpread,
+  isEditorFullScreen,
+  setIsEditorFullScreen
 }) => {
+  const editorRef = useRef(null)
+  const viewRef = useRef(null)
 
-    const editorRef = useRef(null)
+  useEffect(() => {
+    const savedCode = getFromLocal()
+    console.log('savedCode', savedCode)
+    if (savedCode) setCode(savedCode)
+  }, [setCode])
 
-    useEffect(() => {
-        if (editorRef.current) {
-            let newHeight = "300px"; // Default height
+  useEffect(() => {
+    setToLocal(code)
+  }, [code])
 
-            if (isEditorFullScreen) {
-                newHeight = "100vh"; // Full screen mode
-            } else if (isEditorSpread) {
-                newHeight = "500px"; // Expanded mode
-            }
+  useEffect(() => {
+    if (!editorRef.current) return
 
-            editorRef.current.setSize("100%", newHeight);
+    const themes = { dracula, eclipse, oneDark }
+    const currentTheme = themes[editorTheme] || oneDark
+
+    const state = EditorState.create({
+      doc: code,
+      extensions: [
+        lineNumbers(),
+        highlightActiveLineGutter(),
+        highlightSpecialChars(),
+        drawSelection(),
+        EditorView.lineWrapping,
+        highlightActiveLine(),
+        history(),
+        keymap.of([...defaultKeymap, ...historyKeymap]),
+        javascript(),
+        currentTheme,
+        EditorView.editable.of(true),
+        EditorView.updateListener.of(update => {
+          if (update.docChanged) {
+            setCode(update.state.doc.toString())
+          }
+        })
+      ]
+    })
+
+    const view = new EditorView({
+      state,
+      parent: editorRef.current
+    })
+
+    viewRef.current = view
+
+  const height = isEditorFullScreen ? '100vh' : isEditorSpread ? '500px' : '300px'
+  view.dom.style.height = height
+
+    return () => {
+      view.destroy()
+    }
+  }, [editorTheme])
+
+  useEffect(() => {
+    if (
+      viewRef.current &&
+      code !== viewRef.current.state.doc.toString()
+    ) {
+      viewRef.current.dispatch({
+        changes: {
+          from: 0,
+          to: viewRef.current.state.doc.length,
+          insert: code
         }
-    }, [isEditorSpread, isEditorFullScreen]);  // 🔥 Depend on both states    
+      })
+    }
+  }, [code])
+  
 
-    useEffect(() => {
-        const savedCode = getFromLocal()
-        if (savedCode) setCode(savedCode)
-    }, [setCode])
+  useEffect(() => {
+    if (viewRef.current) {
+      const height = isEditorFullScreen ? '100vh' : isEditorSpread ? '500px' : '300px'
+      viewRef.current.dom.style.height = height
+    }
+  }, [isEditorSpread, isEditorFullScreen])
 
-    useEffect(() => {
-        setToLocal(code)
-    }, [code])
-
-    return (
-        <div className='editor-wrapper' style={{ position: 'relative' }}>
-            <CodeMirror
-                value={code}
-                options={{
-                    mode: 'javascript',
-                    theme: editorTheme,
-                    lineNumbers: true,
-                    lineWrapping: true,
-                    // inputStyle: 'contenteditable'
-                }}
-
-                onBeforeChange={(editor, data, value) => {
-                    setCode(value)
-                }}
-                editorDidMount={(editor) => {
-                    editorRef.current = editor; // Save editor instance
-                    editor.setSize("100%", isEditorSpread ? "500px" : "300px");
-                }}
-            />
-            <img
-                src={resize} alt=""
-                onClick={() => {
-                    if (!isEditorFullScreen) {  // Prevent toggle if full-screen is active
-                        setIsEditorSpread(prev => !prev);
-                    }
-                }}
-                style={{ backgroundColor: isEditorFullScreen && 'black' }}
-            />
-            <img
-                src={resizeFs} alt=""
-                onClick={() => setIsEditorFullScreen(!isEditorFullScreen)}
-                style={{ top: '140px', padding: '5px', width: '35px' }}
-            />
-        </div>
-    )
+  return (
+    <div className='editor-wrapper' style={{ position: 'relative' }}>
+      <div ref={editorRef} style={{ width: '100%' }} />
+      <img
+        src={resize} alt='resize'
+        onClick={() => {
+          if (!isEditorFullScreen) {
+            setIsEditorSpread(prev => !prev)
+          }
+        }}
+        style={{ backgroundColor: isEditorFullScreen && 'black' }}
+      />
+      <img
+        src={resizeFs} alt='fullscreen'
+        onClick={() => setIsEditorFullScreen(!isEditorFullScreen)}
+        style={{ top: '140px', padding: '5px', width: '35px' }}
+      />
+    </div>
+  )
 }
 
 export default CodeEditor

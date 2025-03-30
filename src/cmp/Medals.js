@@ -42,7 +42,6 @@ const Medals = ({ output, setShareText }) => {
         setStreak(streak)
         setMedals(medals)
         setLastDateSolved(lastSolvedDate)
-        console.log('Data loaded from storage')
     }, [])
 
 

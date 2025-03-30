@@ -319,4 +319,5 @@
   cursor: pointer;
   border: solid 1px rgb(139, 139, 139);
   border-radius: 8px;
+  z-index: 500;
 }
