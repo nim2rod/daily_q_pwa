@@ -54,7 +54,10 @@ const CodeEditor = ({
                     mode: 'javascript',
                     theme: editorTheme,
                     lineNumbers: true,
+                    lineWrapping: true,
+                    // inputStyle: 'contenteditable'
                 }}
+
                 onBeforeChange={(editor, data, value) => {
                     setCode(value)
                 }}
