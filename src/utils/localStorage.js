@@ -1,6 +1,6 @@
 export function getFromLocal() {
     let data = localStorage.getItem('userCode');
-    return data ? JSON.parse(data) : `function func(){
+    return data ? JSON.parse(data) : `function solution(){
 
 }`;
 }

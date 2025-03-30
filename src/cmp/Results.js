@@ -15,7 +15,8 @@ const Results = ({ output, setIsOutputShow, isOutputShow }) => {
                 </div>
             ) : (
                 <div>
-                    <h2>Sorry, your solution is incorrect. Try again!</h2>
+                    <h3>Sorry, your solution is incorrect. <br/>Try again!</h3>
+                    <h4>Make sure the function name is: solution</h4>
                     <h3>Test Results:</h3>
                     {isOutputShow && (
                     <>

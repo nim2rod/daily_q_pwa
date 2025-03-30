@@ -51,7 +51,7 @@ const ShowQuestion = () => {
             }
             <div 
               style={{ display: 'flex', alignItems: 'center', 
-              justifyContent: 'space-between', marginInline: '10px', padding: '5px' }}
+              justifyContent: 'space-between', marginInline: '10px', padding: '5px', marginTop:'5px' }}
             >
                 <div className="tooltip-io">
                     <span className='io' tabIndex="0">I/O</span>
