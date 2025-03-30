@@ -39,7 +39,7 @@ function App() {
     <div className="App">
       {!isEditorSpread && !isEditorFullScreen && <ShareBtn />}
 
-      {!isEditorSpread && !isEditorFullScreen && (
+      {!isEditorSpread && !isEditorFullScreen && !isOutputShow &&(
         <div className="headline">The Daily Question:</div>
       )}
 
