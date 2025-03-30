@@ -223,6 +223,7 @@
 
 .tooltip-io span {
   cursor: pointer;
+  max-width: 93vw;
 }
 
 .tooltip-io .tooltiptext-io {
