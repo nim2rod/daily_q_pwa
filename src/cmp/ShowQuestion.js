@@ -7,6 +7,7 @@ const ShowQuestion = () => {
     const [inOut, setInOut] = useState([])
     const [loading, setLoading] = useState(false)
     const [explanation, setExplanation] = useState('')
+    const [hasFetchedExplanation, setHasFetchedExplanation] = useState(false)
 
     //GET Qeustion:
     useEffect(() => {
@@ -21,14 +22,15 @@ const ShowQuestion = () => {
     }, [])
 
     const handleExplain = async () => {
-        if (explanation) return
+        if (hasFetchedExplanation) return
+
         setLoading(true)
         try {
             const res = await axios.post(`${process.env.REACT_APP_URL}/explain`, {
                 question: question,
             })
             setExplanation(res.data.explanation)
-
+            setHasFetchedExplanation(true)
         } catch (error) {
             console.log('Error fetching the explanation:', error)
             setExplanation('Error fetching the explanation')
@@ -44,7 +46,10 @@ const ShowQuestion = () => {
                 <span>{question}</span>
             )
             }
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginInline: '10px' }}>
+            <div 
+              style={{ display: 'flex', alignItems: 'center', 
+              justifyContent: 'space-between', marginInline: '10px', padding: '5px' }}
+            >
                 <div className="tooltip-io">
                     <span className='io' tabIndex="0">I/O</span>
                     <span className="tooltiptext-io" style={{ left: '-23px' }}>
