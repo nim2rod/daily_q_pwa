@@ -33,10 +33,11 @@ const Editor_monaco = ({
                 onChange={handleEditorChange}
                 theme={editorTheme}
                 options={{
-                    fontSize: 20 // Adjust this value to set the font size
+                    fontSize: 16,
+                    wordWrap: 'on', 
                 }}
             />
-           
+
             <img
                 src={resize} alt=""
                 onClick={() => {
