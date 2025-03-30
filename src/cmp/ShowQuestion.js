@@ -47,7 +47,7 @@ const ShowQuestion = () => {
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginInline: '10px' }}>
                 <div className="tooltip-io">
                     <span className='io' tabIndex="0">I/O</span>
-                    <span className="tooltiptext-io" style={{ left: '0' }}>
+                    <span className="tooltiptext-io" style={{ left: '-23px' }}>
                         {inOut.slice(0, 3).map((test, index) => (
                             < span key={index} >
                                 <span className="io-label">Input:</span>
