@@ -217,6 +217,7 @@
   width: fit-content;
   padding: 3px;
   border-radius: 4px;
+  cursor: pointer;
 }
 
 .tooltip-io span {
@@ -225,7 +226,7 @@
 
 .tooltip-io .tooltiptext-io {
   visibility: hidden;
-  width: fit-content;
+  width: max-content;
   background-color: #555;
   color: #fff;
   text-align: left;
@@ -233,18 +234,24 @@
   padding: 5px;
   position: absolute;
   z-index: 1;
-  bottom: -140%;
-  left: 31%;
-  margin-left: -80px;
+  bottom: -50%;
+  margin-left: 40px;
   opacity: 0;
   transition: opacity 0.3s;
   font-size: medium;
 }
 
-.tooltip-io span:hover+.tooltiptext-io {
+/* .tooltip-io span:hover+.tooltiptext-io {
+  visibility: visible;
+  opacity: 1;
+} */
+
+.tooltip-io:hover .tooltiptext-io,
+.tooltip-io:focus-within .tooltiptext-io {
   visibility: visible;
   opacity: 1;
 }
+
 
 .tooltiptext-io .io-label {
   margin-top: 8px;

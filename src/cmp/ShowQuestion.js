@@ -5,15 +5,13 @@ import { formatValue } from '../utils/formatVal'
 const ShowQuestion = () => {
     const [question, setQuestion] = useState('')
     const [inOut, setInOut] = useState([])
+    const [loading, setLoading] = useState(false)
+    const [explanation, setExplanation] = useState('')
 
     //GET Qeustion:
     useEffect(() => {
-        console.log('process.env.URL: ', process.env.URL)
-        // axios.get('http://localhost:3030/daily-question')
-        // axios.get('https://daily-q-server.vercel.app/daily-question')
         axios.get(`${process.env.REACT_APP_URL}/daily-question`)
             .then(res => {
-                console.log('res.data: ', res.data)
                 setQuestion(res.data.question)
                 setInOut(res.data.tests)
             })
@@ -21,6 +19,22 @@ const ShowQuestion = () => {
                 console.log('Error fetching the daily question:, error')
             })
     }, [])
+
+    const handleExplain = async () => {
+        console.log('handleExplain')
+        setLoading(true)
+        try {
+            const res = await axios.post(`${process.env.REACT_APP_URL}/explain`, {
+                question: question,
+            })
+            setExplanation(res.data.explanation)
+
+        } catch (error) {
+            console.log('Error fetching the explanation:', error)
+            setExplanation('Error fetching the explanation')
+        }
+        setLoading(false)
+    }
 
     return (
         <>
@@ -30,20 +44,26 @@ const ShowQuestion = () => {
                 <span>{question}</span>
             )
             }
-            <div className="tooltip-io">
-                <span className='io'>I/O</span>
-                <span className="tooltiptext-io">
-                    {inOut.slice(0, 3).map((test, index) => (
-                        < span key={index} >
-                            <span className="io-label">Input:</span>
-                            {/* {(typeof (test.input[0]) === 'object' && test.input[0] !== null) ? (JSON.stringify(test.input[0])) : (test.input[0])} */}
-                            <span>{formatValue(test.input)}</span>
-                            <span className="io-label">Output:</span>
-                            {((typeof (test.output) === 'boolean' || typeof (test.output) === 'object') && test.output !== null) ? (JSON.stringify(test.output)) : (test.output)}
-                            <br></br>
-                        </span>
-                    ))}
-                </span>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginInline: '10px' }}>
+                <div className="tooltip-io">
+                    <span className='io' tabIndex="0">I/O</span>
+                    <span className="tooltiptext-io">
+                        {inOut.slice(0, 3).map((test, index) => (
+                            < span key={index} >
+                                <span className="io-label">Input:</span>
+                                {/* {(typeof (test.input[0]) === 'object' && test.input[0] !== null) ? (JSON.stringify(test.input[0])) : (test.input[0])} */}
+                                <span>{formatValue(test.input)}</span>
+                                <span className="io-label">Output:</span>
+                                {((typeof (test.output) === 'boolean' || typeof (test.output) === 'object') && test.output !== null) ? (JSON.stringify(test.output)) : (test.output)}
+                                <br></br>
+                            </span>
+                        ))}
+                    </span>
+                </div>
+
+                <div className='io' onClick={handleExplain}>
+                    {loading ? "Thinking..." : "Help"}
+                </div>
             </div>
         </>
     )
