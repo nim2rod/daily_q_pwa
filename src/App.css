@@ -299,6 +299,22 @@
   background-color: #f1f1f1;
 }
 
+.close-table-btn {
+  float: left;
+  margin-bottom: 8px;
+  background: #eee;
+  border: none;
+  padding: 4px 8px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.close-table-btn:hover {
+  background: #ddd;
+}
+
+/* Badge: */
 .pass-badge {
   color: white;
   padding: 4px 8px;

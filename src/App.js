@@ -11,8 +11,9 @@ import Medals from './cmp/Medals'
 import './App.css';
 
 function App() {
-  const [code, setCode] = useState('');
+  const [code, setCode] = useState('')
   const [output, setOutput] = useState('')
+  const [isOutputShow, setIsOutputShow] = useState(false)
   const [isPassed, setIsPassed] = useState(false)
   const [shareText, setShareText] = useState('')
   const [userLog] = useState('guest')
@@ -43,8 +44,8 @@ function App() {
       )}
 
       {/* Results: */}
-      {!isEditorFullScreen && output && output.Results && <Results output={output} />}
-
+      {!isEditorFullScreen && output && output.Results && isOutputShow && 
+      <Results output={output} setIsOutputShow={setIsOutputShow} isOutputShow={isOutputShow}/>}
 
       {isPassed && (
         <SocialShareButtons
@@ -96,7 +97,13 @@ function App() {
       </div>
 
       {/* Submit Button: */}
-      <SubmitBtn code={code} setOutput={setOutput} userId={userLog._id || ''} setIsEditorFullScreen={setIsEditorFullScreen} />
+      <SubmitBtn 
+         code={code} 
+         setOutput={setOutput} 
+         setIsOutputShow={setIsOutputShow}
+         userId={userLog._id || ''} 
+         setIsEditorFullScreen={setIsEditorFullScreen} 
+      />
     </div>
   )
 }

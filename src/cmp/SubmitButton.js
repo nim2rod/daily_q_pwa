@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 
-const SubmitButton = ({ code, setOutput, userId, setIsEditorFullScreen }) => {
+const SubmitButton = ({ code, setOutput, userId, setIsEditorFullScreen, setIsOutputShow }) => {
 
     const handleSubmit = async () => {
         setIsEditorFullScreen(false)
@@ -21,6 +21,7 @@ const SubmitButton = ({ code, setOutput, userId, setIsEditorFullScreen }) => {
         try {
             const res = await axios.post(`${process.env.REACT_APP_URL}/submit-code`, { code, userId })
             setOutput(res.data)
+            setIsOutputShow(true)
         } catch (error) {
             console.error('error: ', error)
             setOutput([`Error: ${error.message}`])
