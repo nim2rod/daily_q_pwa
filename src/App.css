@@ -215,10 +215,12 @@
   margin-left: 3%;
   border: 1px solid #555;
   width: fit-content;
-  padding: 3px;
+  padding: 4px;
   border-radius: 4px;
   cursor: pointer;
   height: 23px;
+  width: 40px;
+  justify-content: center;
 }
 
 .tooltip-io span {
@@ -302,16 +304,19 @@
 .close-table-btn {
   float: left;
   margin-bottom: 8px;
-  background: #eee;
   border: none;
   padding: 4px 8px;
   font-size: 14px;
   cursor: pointer;
   border-radius: 4px;
+  color: white;
+  width: 20px;
+  border: solid 1px black;
+  margin-left: 15px;
 }
 
 .close-table-btn:hover {
-  background: #ddd;
+  background: #6d6c6c;
 }
 
 /* Badge: */

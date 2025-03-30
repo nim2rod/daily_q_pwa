@@ -1,6 +1,7 @@
 // src/cmp/Results.js
 import React from 'react'
 import {formatValue} from '../utils/formatVal'
+import colapse from '../icons/colapse.png'
 
 const Results = ({ output, setIsOutputShow, isOutputShow }) => {
     const { Passed, Results, solvedCount } = output
@@ -18,12 +19,12 @@ const Results = ({ output, setIsOutputShow, isOutputShow }) => {
                     <h3>Test Results:</h3>
                     {isOutputShow && (
                     <>
-                        <button
+                        <img
+                            src={colapse}
+                            alt="colapse"
                             className="close-table-btn"
                             onClick={() => setIsOutputShow(false)}
-                        >
-                        ✖️ Close
-                        </button>
+                        />
                         <table className="results-table">
                             <thead>
                                 <tr>
