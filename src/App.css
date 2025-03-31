@@ -331,6 +331,13 @@
   border-radius: 4px;
 }
 
+.editor-wrapper{
+  border-radius:8px;
+  overflow: hidden;
+  margin-inline: 1px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.06);
+}
+
 .editor-wrapper img {
   position: absolute;
   top: 90px;
