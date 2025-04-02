@@ -4,7 +4,7 @@ import CodeEditorMirror from './cmp/Editor';
 import CodeEditorMonaco from './cmp/Editor_monaco'
 import ShowQuestion from './cmp/ShowQuestion';
 import SubmitBtn from './cmp/SubmitButton'
-import ShareBtn from './cmp/ShareBtn'
+import Header from './cmp/Header'
 import SocialShareButtons from './cmp/SocialShareButtons'
 import Results from './cmp/Results'
 import Medals from './cmp/Medals'
@@ -75,11 +75,27 @@ function App() {
         setExplanation('Error fetching the explanation')
     }
     setLoading(false)
-}
+  }
+
+  const handleShareApp = () => {
+    if (navigator.share) {
+      navigator.share({
+        title: "Share dailyQ app",
+        text: "Check out this awesome app!",
+        url: 'https://dailyqpwa-nimrod-devs-projects.vercel.app/',
+      }).catch((err) => {
+        if (err.name !== 'AbortError') {
+          console.error('Share failed:', err)
+        }
+      })
+    } else {
+      alert('Sharing is not supported on this browser.')
+    }
+  }
 
   return (
     <div className="App">
-      {!isEditorSpread && !isEditorFullScreen && <ShareBtn />}
+      {!isEditorSpread && !isEditorFullScreen && <Header />}
 
       {!isEditorSpread && !isEditorFullScreen && !isOutputShow &&(
         <div className="headline">The Daily Question:</div>
@@ -144,6 +160,14 @@ function App() {
           setIsEditorFullScreen={setIsEditorFullScreen} 
           className="bottom-bar-btn" // make sure SubmitBtn accepts className
         />
+
+        {/* Share Button */}
+        <div className="tooltip-io">
+          <div className="bottom-bar-btn" onClick={handleShareApp}>
+            Share
+          </div>
+        </div>
+
       </div>
 
       {/* Editors: */}
@@ -178,9 +202,6 @@ function App() {
         <div onClick={() => { changeEditor('mirror'); changeEditorTheme('eclipse'); }} >⚪️</div>
         <div onClick={() => { changeEditor('mirror'); changeEditorTheme('dracula'); }} >🟣</div>
       </div>
-
-     
-
 
     </div>
   )

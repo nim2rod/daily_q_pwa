@@ -2,6 +2,8 @@
 
 body {
   font-family: 'Inter', sans-serif;
+  background-color: #f9f9f9;
+  color: #242525;
 }
 
 .App {
@@ -70,6 +72,7 @@ body {
   font-size: 1.2em;
   padding-left: 10px;
   gap: 20px;
+  padding-right: 10px;
 }
 
 /* Editor */
