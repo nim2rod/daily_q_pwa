@@ -15,9 +15,11 @@ const Results = ({ output, setIsOutputShow, isOutputShow }) => {
                 </div>
             ) : (
                 <div>
-                    <h3>Sorry, your solution is incorrect. <br/>Try again!</h3>
-                    <h4>Make sure the function name is: solution</h4>
-                    <h3>Test Results:</h3>
+                    <div className="false-result-wrraper">
+                        <div>Sorry, your solution is incorrect. <br/>Try again!</div>
+                        <div>Make sure the function name is: solution</div>
+                        <div>Test Results:</div>
+                    </div>
                     {isOutputShow && (
                     <>
                         <img

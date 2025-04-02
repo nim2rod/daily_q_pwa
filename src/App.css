@@ -58,7 +58,7 @@ body {
 .top-header {
   display: flex;
   justify-content: space-between;
-  height: 47px;
+  height: 53px;
   align-items: center;
   padding-inline: 10px;
   background-color: #ffffff;
@@ -293,6 +293,23 @@ body {
 }
 
 /* Results:  */
+.false-result-wrraper {
+    padding: 8px;
+    border: solid 1px #929292;
+    width: 80%;
+    margin-left: 13px;
+    border-radius: 10px;
+    background-color: azure;
+    gap: 7px;
+    display: flex;
+    flex-direction: column;
+    margin-block: 10px;
+}
+
+.false-result-wrraper div:nth-child(2){
+  font-weight: 600;
+}
+
 .results-table {
   width: 100%;
   border-collapse: collapse;
