@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  /* text-align: center; */
   max-width: 1000px;
   margin: 0 auto;
 }
@@ -10,7 +10,7 @@
 }
 
 .headline {
-  padding: 5px;
+  padding: 5px 0px 10px 10px;
   font-size: larger;
   font-weight: 200;
 }
@@ -53,12 +53,17 @@
   height: 40px;
   align-items: center;
   padding-inline: 10px;
+  background-color: #ffffff;
+  border-bottom: 2px solid #eee;
+  box-shadow: 0 0 10px rgb(0 0 0 / 5%);
 }
 
 .q_m_wrapper {
   display: flex;
   flex-direction: column;
   font-size: 1.2em;
+  padding-left: 10px;
+  gap: 20px;
 }
 
 /* Editor */
@@ -148,12 +153,13 @@
 .medalsCmp {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
   width: fit-content;
-  margin: auto;
   gap: 10px;
   margin-bottom: 10px;
+  margin: auto;
+  align-items: center;
+  padding-bottom: 5px;
 }
 
 .daysSolved {
@@ -332,8 +338,8 @@
   border-radius: 4px;
 }
 
-.editor-wrapper{
-  border-radius:8px;
+.editor-wrapper {
+  border-radius: 8px;
   overflow: hidden;
   margin-inline: 1px;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.06);
@@ -364,14 +370,14 @@
   bottom: 0;
   width: 100%;
   max-width: 1000px;
-  height: 55px; 
+  height: 55px;
   background-color: rgb(255 255 255);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.08); 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
   border-top: 2px solid #eee;
   display: flex;
   align-items: center;
-  justify-content: space-around; 
-  z-index: 1000; 
+  justify-content: space-around;
+  z-index: 1000;
 }
 
 .bottom-bar-btn {
@@ -385,7 +391,8 @@
   font-size: 14px;
   font-weight: 500;
   color: white;
-  background-color: #6c757d; /* subtle gray */
+  background-color: #6c757d;
+  /* subtle gray */
   border: none;
   border-radius: 20px;
   cursor: pointer;
@@ -395,4 +402,3 @@
 .bottom-bar-btn:hover {
   background-color: #5a6268;
 }
-
