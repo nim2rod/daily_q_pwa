@@ -89,29 +89,19 @@ const Medals = ({ output, setShareText }) => {
             {streak !== 0 && (
                 <span className="daysSolved">You solved {streak} days in a row!</span>
             )}
-
-            {medals.length > 0 ? (
-                <span>Medal Earned: {medals.join(', ')}</span>
-            ) : (
                 <>
                     <div className="tooltip">
                         <strong>Medals Earned:
+                            {medals.length ? medals.join(', ') : <span style={{marginLeft:'5px', fontWeight:'300'}}>0</span>}
                             <img src={require('.././icons/info.png')} alt="info" className="info-icon" />
                         </strong>
-                        <span className="tooltiptext">
-                            you didn't earn any medals yet
-                        </span>
-                    </div>
-                    <div className="tooltip">
-                        <span >Learn more 💡</span>
-                        <span className="tooltiptext">
+                       <span className="tooltiptext">
                             Earn medals by solving questions:<br />
                             3 days in a row: 🥉 <br />
                             5 days in a row: 🏅
                         </span>
                     </div>
                 </>
-            )}
         </div>
     )
 }
