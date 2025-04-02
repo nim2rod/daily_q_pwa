@@ -164,9 +164,7 @@ body {
   width: fit-content;
   gap: 10px;
   padding-top: 75px;
-  /* margin: auto; */
-  /* align-items: center; */
-  margin-left: 10px;
+  margin-left: 15px;
 }
 
 .daysSolved {
@@ -184,7 +182,6 @@ body {
 
 .tooltip .tooltiptext {
   visibility: hidden;
-  width: 165px;
   background-color: #555;
   color: #fff;
   text-align: center;
@@ -394,7 +391,7 @@ body {
   bottom: 0;
   width: 100%;
   max-width: 1000px;
-  height: 55px;
+  height: 60px;
   background-color: rgb(255 255 255);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
   border-top: 2px solid #eee;
@@ -412,7 +409,7 @@ body {
   margin: 0 5px;
   min-width: 60px;
   height: 20px;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
   color: white;
   background-color: #6c757d;

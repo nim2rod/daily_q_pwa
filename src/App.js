@@ -174,7 +174,7 @@ function App() {
         {/* Help Button */}
         <div className="tooltip-io">
           <div className="bottom-bar-btn" onClick={handleExplain}>
-            {loading ? "Thinking..." : "Help"}
+            {loading ? "Thinking..." : "Explain"}
           </div>
           {explanation && (
             <span className="tooltiptext-io" style={{ width: '300px', left: '-80%' }}>
