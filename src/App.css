@@ -18,9 +18,9 @@ body {
 }
 
 .headline {
-  padding: 5px 0px 10px 10px;
   font-size: larger;
   font-weight: 200;
+  font-weight: 600;
 }
 
 .submit-btn {
@@ -50,7 +50,7 @@ body {
 }
 
 .js-icon {
-  width: 24px;
+  width: 26px;
   height: fit-content;
   align-self: center;
 }
@@ -67,12 +67,9 @@ body {
 }
 
 .q_m_wrapper {
-  display: flex;
-  flex-direction: column;
   font-size: 1.2em;
-  padding-left: 10px;
   gap: 20px;
-  padding-right: 10px;
+  padding: 13px 15px 15px 15px;
 }
 
 /* Editor */
@@ -88,7 +85,7 @@ body {
   display: flex;
   gap: 20%;
   font-size: 1.5em;
-  padding: 1%;
+  padding: 2%;
   cursor: pointer;
   align-items: center;
   -webkit-tap-highlight-color: transparent;
@@ -165,14 +162,14 @@ body {
   justify-content: center;
   width: fit-content;
   gap: 10px;
-  margin-bottom: 10px;
-  margin: auto;
-  align-items: center;
-  padding-bottom: 5px;
+  padding-top: 75px;
+  /* margin: auto; */
+  /* align-items: center; */
+  margin-left: 10px;
 }
 
 .daysSolved {
-  font-size: 1.4em;
+  font-size: 1.2em;
 }
 
 .tooltip {
@@ -181,6 +178,7 @@ body {
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
   user-select: none;
+  font-size: large;
 }
 
 .tooltip .tooltiptext {

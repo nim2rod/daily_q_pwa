@@ -97,10 +97,6 @@ function App() {
     <div className="App">
       {!isEditorSpread && !isEditorFullScreen && <Header />}
 
-      {!isEditorSpread && !isEditorFullScreen && !isOutputShow &&(
-        <div className="headline">The Daily Question:</div>
-      )}
-
       {/* Results: */}
       {!isEditorFullScreen && output && output.Results && isOutputShow && 
       <Results output={output} setIsOutputShow={setIsOutputShow} isOutputShow={isOutputShow}/>}
@@ -115,60 +111,9 @@ function App() {
       {/* Show Q +  Medals: */}
       <div className="q_m_wrapper">
         {!isEditorFullScreen && <ShowQuestion question={question}/>}
-        {!isEditorSpread && !isEditorFullScreen && (
-          <Medals output={output} setShareText={handleSetShareText} />
-        )}
       </div>
 
-      <div className="bottom-bar">
-        {/* I/O Button */}
-        <div className="tooltip-io">
-          <span className="bottom-bar-btn" tabIndex="0">I/O</span>
-          <span className="tooltiptext-io" style={{ left: '-23px' }}>
-            {inOut.slice(0, 3).map((test, index) => (
-              <span key={index}>
-                <span className="io-label">Input:</span>
-                <span>{formatValue(test.input)}</span>
-                <span className="io-label">Output:</span>
-                {((typeof (test.output) === 'boolean' || typeof (test.output) === 'object') && test.output !== null)
-                  ? JSON.stringify(test.output)
-                  : test.output}
-                <br />
-              </span>
-            ))}
-          </span>
-        </div>
-
-        {/* Help Button */}
-        <div className="tooltip-io">
-          <div className="bottom-bar-btn" onClick={handleExplain}>
-            {loading ? "Thinking..." : "Help"}
-          </div>
-          {explanation && (
-            <span className="tooltiptext-io" style={{ width: '300px', right: '0' }}>
-              {explanation}
-            </span>
-          )}
-        </div>
-
-        {/* Submit Button */}
-        <SubmitBtn 
-          code={code} 
-          setOutput={setOutput} 
-          setIsOutputShow={setIsOutputShow}
-          userId={userLog._id || ''} 
-          setIsEditorFullScreen={setIsEditorFullScreen} 
-          className="bottom-bar-btn" // make sure SubmitBtn accepts className
-        />
-
-        {/* Share Button */}
-        <div className="tooltip-io">
-          <div className="bottom-bar-btn" onClick={handleShareApp}>
-            Share
-          </div>
-        </div>
-
-      </div>
+    
 
       {/* Editors: */}
       {editorProvider === 'mirror' ? (
@@ -201,6 +146,60 @@ function App() {
         />
         <div onClick={() => { changeEditor('mirror'); changeEditorTheme('eclipse'); }} >⚪️</div>
         <div onClick={() => { changeEditor('mirror'); changeEditorTheme('dracula'); }} >🟣</div>
+      </div>
+
+      {!isEditorSpread && !isEditorFullScreen && (
+          <Medals output={output} setShareText={handleSetShareText} />
+      )}
+
+      <div className="bottom-bar">
+        {/* I/O Button */}
+        <div className="tooltip-io">
+          <span className="bottom-bar-btn" tabIndex="0">I/O</span>
+          <span className="tooltiptext-io" style={{ left: '-23px' }}>
+            {inOut.slice(0, 3).map((test, index) => (
+              <span key={index}>
+                <span className="io-label">Input:</span>
+                <span>{formatValue(test.input)}</span>
+                <span className="io-label">Output:</span>
+                {((typeof (test.output) === 'boolean' || typeof (test.output) === 'object') && test.output !== null)
+                  ? JSON.stringify(test.output)
+                  : test.output}
+                <br />
+              </span>
+            ))}
+          </span>
+        </div>
+
+        {/* Help Button */}
+        <div className="tooltip-io">
+          <div className="bottom-bar-btn" onClick={handleExplain}>
+            {loading ? "Thinking..." : "Help"}
+          </div>
+          {explanation && (
+            <span className="tooltiptext-io" style={{ width: '300px', left: '-80%' }}>
+              {explanation}
+            </span>
+          )}
+        </div>
+
+        {/* Submit Button */}
+        <SubmitBtn 
+          code={code} 
+          setOutput={setOutput} 
+          setIsOutputShow={setIsOutputShow}
+          userId={userLog._id || ''} 
+          setIsEditorFullScreen={setIsEditorFullScreen} 
+          className="bottom-bar-btn" // make sure SubmitBtn accepts className
+        />
+
+        {/* Share Button */}
+        <div className="tooltip-io">
+          <div className="bottom-bar-btn" onClick={handleShareApp}>
+            Share
+          </div>
+        </div>
+
       </div>
 
     </div>

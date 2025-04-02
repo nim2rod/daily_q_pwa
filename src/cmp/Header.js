@@ -1,26 +1,13 @@
 import React from 'react'
+import logo from '.././icons/hourglass.png'
 
 const Header = () => {
-  // const handleShareApp = () => {
-  //   if (navigator.share) {
-  //     navigator.share({
-  //       title: "Share dailyQ app",
-  //       text: "Check out this awesome app!",
-  //       url: 'https://dailyqpwa-nimrod-devs-projects.vercel.app/',
-  //     }).catch((err) => {
-  //       if (err.name !== 'AbortError') {
-  //         console.error('Share failed:', err)
-  //       }
-  //     })
-  //   } else {
-  //     alert('Sharing is not supported on this browser.')
-  //   }
-  // }
 
   return (
     <>
       <div className='top-header'>
-        {/* <p className='share_header' onClick={handleShareApp}>Share App 💬</p> */}
+        <img src={logo} alt="" style={{width:'26px'}}/>
+        <div className="headline">The Daily Question</div>
         <img src={require('.././icons/js-file.png')} alt="js-file" className="js-icon" />
       </div>
     </>
