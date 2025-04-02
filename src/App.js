@@ -8,6 +8,8 @@ import ShareBtn from './cmp/ShareBtn'
 import SocialShareButtons from './cmp/SocialShareButtons'
 import Results from './cmp/Results'
 import Medals from './cmp/Medals'
+import { formatValue } from './utils/formatVal'
+import axios from 'axios'
 import './App.css';
 
 function App() {
@@ -22,18 +24,58 @@ function App() {
   const [isEditorSpread, setIsEditorSpread] = useState(false)
   const [isEditorFullScreen, setIsEditorFullScreen] = useState(false)
 
+  const [inOut, setInOut] = useState([])
+  const [loading, setLoading] = useState(false)
+  const [explanation, setExplanation] = useState('')
+  const [hasFetchedExplanation, setHasFetchedExplanation] = useState(false)
+  const [question, setQuestion] = useState('')
+
+
   useEffect(() => {
     if (output && output.Passed !== undefined) {
       setIsPassed(output.Passed)
     }
   }, [output])
 
+  //GET Qeustion:
+  useEffect(() => {
+      const fetchQuestion = async () => {
+          try {
+              const res = await axios.get(`${process.env.REACT_APP_URL}/daily-question`)
+              setQuestion(res.data.question)
+              setInOut(res.data.tests)
+          } catch (error) {
+              console.log('Error fetching the daily question:', error)
+          }
+      }
+
+      fetchQuestion()
+  }, [])
+
   const handleSetShareText = (text) => {
     setShareText(text);
   }
 
   const changeEditor = (val) => setEditorProvider(val)
-  const changeEditorTheme = (theme) => setEditorTheme(theme);
+
+  const changeEditorTheme = (theme) => setEditorTheme(theme)
+
+  const handleExplain = async () => {
+    if (hasFetchedExplanation) return
+
+    setLoading(true)
+    try {
+        const res = await axios.post(`${process.env.REACT_APP_URL}/explain`, {
+            question: question,
+        })
+        setExplanation(res.data.explanation)
+        setHasFetchedExplanation(true)
+    } catch (error) {
+        console.log('Error fetching the explanation:', error)
+        setExplanation('Error fetching the explanation')
+    }
+    setLoading(false)
+}
 
   return (
     <div className="App">
@@ -56,11 +98,52 @@ function App() {
 
       {/* Show Q +  Medals: */}
       <div className="q_m_wrapper">
-        {!isEditorFullScreen && <ShowQuestion />}
-        {/* <ShowQuestion /> */}
+        {!isEditorFullScreen && <ShowQuestion question={question}/>}
         {!isEditorSpread && !isEditorFullScreen && (
           <Medals output={output} setShareText={handleSetShareText} />
         )}
+      </div>
+
+      <div className="bottom-bar">
+        {/* I/O Button */}
+        <div className="tooltip-io">
+          <span className="bottom-bar-btn" tabIndex="0">I/O</span>
+          <span className="tooltiptext-io" style={{ left: '-23px' }}>
+            {inOut.slice(0, 3).map((test, index) => (
+              <span key={index}>
+                <span className="io-label">Input:</span>
+                <span>{formatValue(test.input)}</span>
+                <span className="io-label">Output:</span>
+                {((typeof (test.output) === 'boolean' || typeof (test.output) === 'object') && test.output !== null)
+                  ? JSON.stringify(test.output)
+                  : test.output}
+                <br />
+              </span>
+            ))}
+          </span>
+        </div>
+
+        {/* Help Button */}
+        <div className="tooltip-io">
+          <div className="bottom-bar-btn" onClick={handleExplain}>
+            {loading ? "Thinking..." : "Help"}
+          </div>
+          {explanation && (
+            <span className="tooltiptext-io" style={{ width: '300px', right: '0' }}>
+              {explanation}
+            </span>
+          )}
+        </div>
+
+        {/* Submit Button */}
+        <SubmitBtn 
+          code={code} 
+          setOutput={setOutput} 
+          setIsOutputShow={setIsOutputShow}
+          userId={userLog._id || ''} 
+          setIsEditorFullScreen={setIsEditorFullScreen} 
+          className="bottom-bar-btn" // make sure SubmitBtn accepts className
+        />
       </div>
 
       {/* Editors: */}
@@ -96,14 +179,9 @@ function App() {
         <div onClick={() => { changeEditor('mirror'); changeEditorTheme('dracula'); }} >🟣</div>
       </div>
 
-      {/* Submit Button: */}
-      <SubmitBtn 
-         code={code} 
-         setOutput={setOutput} 
-         setIsOutputShow={setIsOutputShow}
-         userId={userLog._id || ''} 
-         setIsEditorFullScreen={setIsEditorFullScreen} 
-      />
+     
+
+
     </div>
   )
 }

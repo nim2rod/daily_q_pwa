@@ -129,7 +129,6 @@
   left: 0;
   right: 0;
   bottom: 0;
-  /* background: rgba(0, 0, 0, 0.5); */
   display: flex;
   align-items: baseline;
   justify-content: center;
@@ -221,6 +220,7 @@
   height: 23px;
   min-width: 40px;
   justify-content: center;
+  align-items: center;
 }
 
 .tooltip-io span {
@@ -237,6 +237,7 @@
   border-radius: 6px;
   padding: 5px;
   position: absolute;
+  bottom: 100%;
   z-index: 1;
   margin-left: 20px;
   opacity: 0;
@@ -356,3 +357,42 @@
   font-size: 16px;
   line-height: 1.5;
 }
+
+/* Bottom-bar: */
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  max-width: 1000px;
+  height: 55px; 
+  background-color: rgb(255 255 255);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.08); 
+  border-top: 2px solid #eee;
+  display: flex;
+  align-items: center;
+  justify-content: space-around; 
+  z-index: 1000; 
+}
+
+.bottom-bar-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  margin: 0 5px;
+  min-width: 60px;
+  height: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: white;
+  background-color: #6c757d; /* subtle gray */
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.bottom-bar-btn:hover {
+  background-color: #5a6268;
+}
+

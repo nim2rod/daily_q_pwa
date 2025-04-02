@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 
-const SubmitButton = ({ code, setOutput, userId, setIsEditorFullScreen, setIsOutputShow }) => {
+const SubmitButton = ({ code, setOutput, userId, setIsEditorFullScreen, setIsOutputShow, className }) => {
 
     const handleSubmit = async () => {
         setIsEditorFullScreen(false)
@@ -29,7 +29,9 @@ const SubmitButton = ({ code, setOutput, userId, setIsEditorFullScreen, setIsOut
     }
 
     return (
-        <button className='submit-btn' onClick={handleSubmit}>Submit</button>
+        <div className={className} onClick={handleSubmit}>
+          Submit
+        </div>
     )
 }
 
