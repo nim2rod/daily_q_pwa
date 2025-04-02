@@ -10,6 +10,7 @@ body {
   /* text-align: center; */
   max-width: 1000px;
   margin: 0 auto;
+  color: #4f404b;
 }
 
 .App-logo {
@@ -68,8 +69,8 @@ body {
 
 .q_m_wrapper {
   font-size: 1.2em;
-  gap: 20px;
   padding: 13px 15px 15px 15px;
+  color: #4f404b;
 }
 
 /* Editor */
@@ -295,15 +296,15 @@ body {
 /* Results:  */
 .false-result-wrraper {
     padding: 8px;
-    border: solid 1px #929292;
     width: 80%;
-    margin-left: 13px;
+    margin-left: 15px;
     border-radius: 10px;
-    background-color: azure;
+    background-color: rgb(255, 255, 255);
     gap: 7px;
     display: flex;
     flex-direction: column;
     margin-block: 10px;
+    color: #4d5665;
 }
 
 .false-result-wrraper div:nth-child(2){
