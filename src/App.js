@@ -8,6 +8,7 @@ import Header from './cmp/Header'
 import SocialShareButtons from './cmp/SocialShareButtons'
 import Results from './cmp/Results'
 import Medals from './cmp/Medals'
+import OutputLog from './cmp/OutputLog'
 import { formatValue } from './utils/formatVal'
 import axios from 'axios'
 import './App.css';
@@ -29,6 +30,10 @@ function App() {
   const [explanation, setExplanation] = useState('')
   const [hasFetchedExplanation, setHasFetchedExplanation] = useState(false)
   const [question, setQuestion] = useState('')
+
+  const [runCodeOutput, setRunCodeOutput] = useState([])
+  const [logs, setLogs] = useState([])
+
 
 
   useEffect(() => {
@@ -93,65 +98,92 @@ function App() {
     }
   }
 
+  const runCode = (userCode) => {
+    setLogs([]);
+    setRunCodeOutput([]);
+  
+    const originalConsoleLog = console.log;
+  
+    console.log = function (...args) {
+      const formattedArgs = args.map(arg =>
+        typeof arg === 'object' ? JSON.stringify(arg) : arg
+      ).join(' ');
+      setLogs(prevLogs => [...prevLogs, formattedArgs]);
+      originalConsoleLog.apply(console, args);
+    };
+  
+    try {
+      const result = eval(userCode);
+      setRunCodeOutput([result]);
+    } catch (error) {
+      setRunCodeOutput([error.toString()]);
+    }
+  
+    console.log = originalConsoleLog;
+  }
+  
+
   return (
     <div className="App">
       {!isEditorSpread && !isEditorFullScreen && <Header />}
+      
+      <div className="main-content">
+          {/* Results: */}
+          {!isEditorFullScreen && output && output.Results && isOutputShow && 
+          <Results output={output} setIsOutputShow={setIsOutputShow} isOutputShow={isOutputShow}/>}
 
-      {/* Results: */}
-      {!isEditorFullScreen && output && output.Results && isOutputShow && 
-      <Results output={output} setIsOutputShow={setIsOutputShow} isOutputShow={isOutputShow}/>}
+          {isPassed && (
+            <SocialShareButtons
+              url="https://dailyqpwa-nimrod-devs-projects.vercel.app/" // Replace with your web app URL
+              text={shareText}
+            />
+          )}
 
-      {isPassed && (
-        <SocialShareButtons
-          url="https://dailyqpwa-nimrod-devs-projects.vercel.app/" // Replace with your web app URL
-          text={shareText}
-        />
-      )}
+          {/* Show Q +  Medals: */}
+          <div className="q_m_wrapper">
+            {!isEditorFullScreen && <ShowQuestion question={question}/>}
+          </div>
 
-      {/* Show Q +  Medals: */}
-      <div className="q_m_wrapper">
-        {!isEditorFullScreen && <ShowQuestion question={question}/>}
+          {/* Editors: */}
+          {editorProvider === 'mirror' ? (
+            <CodeEditorMirror
+              code={code}
+              setCode={setCode}
+              editorTheme={editorTheme}
+              isEditorSpread={isEditorSpread}
+              setIsEditorSpread={setIsEditorSpread}
+              isEditorFullScreen={isEditorFullScreen}
+              setIsEditorFullScreen={setIsEditorFullScreen}
+            />
+          ) : (
+            <CodeEditorMonaco
+              code={code}
+              setCode={setCode}
+              editorTheme={editorTheme}
+              isEditorSpread={isEditorSpread}
+              setIsEditorSpread={setIsEditorSpread}
+              isEditorFullScreen={isEditorFullScreen}
+              setIsEditorFullScreen={setIsEditorFullScreen}
+            />
+          )}
+
+          {/* Editor Buttons:  */}
+          <div className="theme-editor-choose">
+            <img src={require('./icons/vs-black.png')} alt="info"
+              style={{ width: 25 }}
+              onClick={() => { changeEditor('vs'); changeEditorTheme('vs-dark'); }}
+            />
+            <div onClick={() => { changeEditor('mirror'); changeEditorTheme('eclipse'); }} >⚪️</div>
+            <div onClick={() => { changeEditor('mirror'); changeEditorTheme('dracula'); }} >🟣</div>
+          </div>
+
+          {!isEditorSpread && !isEditorFullScreen && (
+              <Medals output={output} setShareText={handleSetShareText} />
+          )}
+
+          <OutputLog output={runCodeOutput} logs={logs} />
+
       </div>
-
-    
-
-      {/* Editors: */}
-      {editorProvider === 'mirror' ? (
-        <CodeEditorMirror
-          code={code}
-          setCode={setCode}
-          editorTheme={editorTheme}
-          isEditorSpread={isEditorSpread}
-          setIsEditorSpread={setIsEditorSpread}
-          isEditorFullScreen={isEditorFullScreen}
-          setIsEditorFullScreen={setIsEditorFullScreen}
-        />
-      ) : (
-        <CodeEditorMonaco
-          code={code}
-          setCode={setCode}
-          editorTheme={editorTheme}
-          isEditorSpread={isEditorSpread}
-          setIsEditorSpread={setIsEditorSpread}
-          isEditorFullScreen={isEditorFullScreen}
-          setIsEditorFullScreen={setIsEditorFullScreen}
-        />
-      )}
-
-      {/* Editor Buttons:  */}
-      <div className="theme-editor-choose">
-        <img src={require('./icons/vs-black.png')} alt="info"
-          style={{ width: 25 }}
-          onClick={() => { changeEditor('vs'); changeEditorTheme('vs-dark'); }}
-        />
-        <div onClick={() => { changeEditor('mirror'); changeEditorTheme('eclipse'); }} >⚪️</div>
-        <div onClick={() => { changeEditor('mirror'); changeEditorTheme('dracula'); }} >🟣</div>
-      </div>
-
-      {!isEditorSpread && !isEditorFullScreen && (
-          <Medals output={output} setShareText={handleSetShareText} />
-      )}
-
       <div className="bottom-bar">
         {/* I/O Button */}
         <div className="tooltip-io">
@@ -197,6 +229,12 @@ function App() {
         <div className="tooltip-io">
           <div className="bottom-bar-btn" onClick={handleShareApp}>
             Share
+          </div>
+        </div>
+
+        <div className="tooltip-io">
+          <div className="bottom-bar-btn" onClick={()=>runCode(code)}>
+            Run
           </div>
         </div>
 
