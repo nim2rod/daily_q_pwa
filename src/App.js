@@ -140,9 +140,11 @@ function App() {
           )}
 
           {/* Show Q +  Medals: */}
-          <div className="q_m_wrapper">
-            {!isEditorFullScreen && <ShowQuestion question={question}/>}
-          </div>
+            {!isEditorFullScreen &&(
+              <div className="q_m_wrapper">
+                <ShowQuestion question={question}/>
+              </div>
+           )} 
 
           {/* Editors: */}
           {editorProvider === 'mirror' ? (

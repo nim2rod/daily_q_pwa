@@ -21,18 +21,26 @@ const OutputLog = ({ output = [], logs = [] }) => {
   }
 
   return (
+    <div className="output-log">
     <div>
-      <div>
         <strong>Output:</strong>
-        <pre>{output.map((item, index) => <div key={index}>{formatOutput(item)}</div>)}</pre>
-      </div>
-      <div>
-        <strong>Logs:</strong>
-        <pre>{logs.map((log, index) => <div key={index}>{log}</div>)}</pre>
-      </div>
+        <pre>
+        {output.map((item, index) => (
+            <div key={index}>{formatOutput(item)}</div>
+        ))}
+        </pre>
     </div>
-  );
-};
+    <div>
+        <strong>Logs:</strong>
+        <pre>
+        {logs.map((log, index) => (
+            <div key={index}>{log}</div>
+        ))}
+        </pre>
+    </div>
+    </div>
+  )
+}
 
 export default OutputLog;
 

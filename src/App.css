@@ -459,3 +459,41 @@ body {
 .bottom-bar-btn:hover {
   background-color: #5a6268;
 }
+
+/* OutputLog: */
+.output-log {
+  background-color: #fdfdfd;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  padding: 16px;
+  margin: 16px auto;
+  max-width: 1000px;
+  width: 86%;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: #333;
+  line-height: 1.5;
+  overflow-x: auto;
+}
+
+.output-log strong {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 15px;
+  color: #222;
+}
+
+.output-log pre {
+  background-color: #f5f5f5;
+  padding: 10px;
+  border-radius: 6px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-x: auto;
+  margin-bottom: 12px;
+}
+
+.output-log pre > div {
+  margin-bottom: 4px;
+}
