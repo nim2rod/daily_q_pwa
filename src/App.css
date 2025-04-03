@@ -386,6 +386,23 @@ body {
   line-height: 1.5;
 }
 
+.cm-tooltip-autocomplete {
+  font-size: 16px;    
+  line-height: 1.6;       
+  padding: 6px 0;
+}
+
+.cm-tooltip-autocomplete .cm-completionLabel {
+  padding: 4px;    
+}
+
+.cm-tooltip-autocomplete .cm-completionIcon {
+  height: 20px;
+  width: 18px;
+  margin-right: 3px;
+  padding: 4px;
+}
+
 /* Bottom-bar: */
 .bottom-bar {
   position: fixed;

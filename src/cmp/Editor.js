@@ -14,6 +14,7 @@ import { javascript } from '@codemirror/lang-javascript'
 import { oneDark } from '@codemirror/theme-one-dark'
 import { dracula } from '@uiw/codemirror-theme-dracula'
 import { eclipse } from '@uiw/codemirror-theme-eclipse'
+import {autocompletion} from '@codemirror/autocomplete'
 
 import { getFromLocal, setToLocal } from '../utils/localStorage'
 import resize from '../icons/resize.svg'
@@ -64,7 +65,8 @@ const CodeEditor = ({
           if (update.docChanged) {
             setCode(update.state.doc.toString())
           }
-        })
+        }),
+        autocompletion()
       ]
     })
 
