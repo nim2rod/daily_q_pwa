@@ -14,7 +14,8 @@ import { javascript } from '@codemirror/lang-javascript'
 import { oneDark } from '@codemirror/theme-one-dark'
 import { dracula } from '@uiw/codemirror-theme-dracula'
 import { eclipse } from '@uiw/codemirror-theme-eclipse'
-import {autocompletion} from '@codemirror/autocomplete'
+import {autocompletion, completeFromList} from '@codemirror/autocomplete'
+import { javascriptLanguage } from '@codemirror/lang-javascript'
 
 import { getFromLocal, setToLocal } from '../utils/localStorage'
 import resize from '../icons/resize.svg'
@@ -41,6 +42,31 @@ const CodeEditor = ({
     setToLocal(code)
   }, [code])
 
+  const myCompletions = [
+    {
+      label: 'console.log',
+      type: 'function',
+      info: 'Log output to the browser console',
+      apply: 'console.log();' 
+    },
+    {
+      label: 'log',
+      type: 'function',
+      info: 'Insert console.log()',
+      apply: 'console.log();'
+    },
+    {
+      label: 'clg',
+      type: 'keyword',
+      info: 'Shortcut for console.log',
+      apply: 'console.log();'
+    }
+  ]
+
+  const combinedCompletions = javascriptLanguage.data.of({
+    autocomplete: completeFromList(myCompletions)
+  })  
+
   useEffect(() => {
     if (!editorRef.current) return
 
@@ -66,7 +92,9 @@ const CodeEditor = ({
             setCode(update.state.doc.toString())
           }
         }),
-        autocompletion()
+        combinedCompletions,
+        autocompletion(),
+
       ]
     })
 
@@ -77,8 +105,8 @@ const CodeEditor = ({
 
     viewRef.current = view
 
-  const height = isEditorFullScreen ? '100vh' : isEditorSpread ? '500px' : '300px'
-  view.dom.style.height = height
+    const height = isEditorFullScreen ? '100vh' : isEditorSpread ? '500px' : '300px'
+    view.dom.style.height = height
 
     return () => {
       view.destroy()
