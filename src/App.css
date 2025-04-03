@@ -448,18 +448,19 @@ body {
   margin: 0 5px;
   min-width: 60px;
   height: 20px;
-  font-size: 16px;
-  font-weight: 500;
-  color: white;
-  background-color: #6c757d;
   border: none;
   border-radius: 20px;
   cursor: pointer;
   transition: background-color 0.2s ease;
+  font-size: 14px;
+  font-weight: 100;
+  /* color: white; */
+  /* background-color: #6c757d; */
+  background-color: rgb(206, 228, 248,0.5);
 }
 
 .bottom-bar-btn:hover {
-  background-color: #5a6268;
+  background-color: rgb(206, 228, 248,1);
 }
 
 /* OutputLog: */
