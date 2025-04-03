@@ -25,7 +25,9 @@ const Editor_monaco = ({
     })
 
     return (
-        <div className='editor-wrapper' style={{ position: 'relative' }}>
+        <div className='editor-wrapper' 
+         style={{ width: (isEditorFullScreen || isEditorSpread) ? '100%' : '97%' }}
+        >
             <Editor
                 height={isEditorFullScreen ? '100vh' : (isEditorSpread ? '500px' : '300px')}
                 defaultLanguage="javascript"
