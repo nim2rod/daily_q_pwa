@@ -384,6 +384,8 @@ body {
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.06);
+  position: relative;
+  margin: 0 auto
 }
 
 .editor-wrapper img {
@@ -494,6 +496,6 @@ body {
   margin-bottom: 12px;
 }
 
-.output-log pre > div {
+.output-log pre>div {
   margin-bottom: 4px;
 }

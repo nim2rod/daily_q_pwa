@@ -137,7 +137,8 @@ const CodeEditor = ({
   }, [isEditorSpread, isEditorFullScreen])
 
   return (
-    <div className='editor-wrapper' style={{ position: 'relative' }}>
+    <div className='editor-wrapper' 
+     style={{ width: (isEditorFullScreen || isEditorSpread) ? '100%' : '95%' }}>
       <div ref={editorRef} style={{ width: '100%' }} />
       <img
         src={resize} alt='resize'
