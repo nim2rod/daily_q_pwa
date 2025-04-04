@@ -8,6 +8,7 @@ import Header from './cmp/Header'
 import SocialShareButtons from './cmp/SocialShareButtons'
 import Results from './cmp/Results'
 import Medals from './cmp/Medals'
+import BottomBar from './cmp/BottomBar'
 import OutputLog from './cmp/OutputLog'
 import { formatValue } from './utils/formatVal'
 import axios from 'axios'
@@ -84,22 +85,6 @@ function App() {
     setLoading(false)
   }
 
-  const handleShareApp = () => {
-    if (navigator.share) {
-      navigator.share({
-        title: "Share dailyQ app",
-        text: "Check out this awesome app!",
-        url: 'https://dailyqpwa-nimrod-devs-projects.vercel.app/',
-      }).catch((err) => {
-        if (err.name !== 'AbortError') {
-          console.error('Share failed:', err)
-        }
-      })
-    } else {
-      alert('Sharing is not supported on this browser.')
-    }
-  }
-
   const runCode = (userCode) => {
     setLogs([]);
     setRunCodeOutput([]);
@@ -112,7 +97,7 @@ function App() {
       ).join(' ');
       setLogs(prevLogs => [...prevLogs, formattedArgs]);
       originalConsoleLog.apply(console, args);
-    };
+    }
   
     try {
       const result = eval(userCode);
@@ -123,7 +108,6 @@ function App() {
   
     console.log = originalConsoleLog;
   }
-  
 
   return (
     <div className="App">
@@ -141,12 +125,12 @@ function App() {
             />
           )}
 
-          {/* Show Q +  Medals: */}
+          {/* Show Q : */}
             {!isEditorFullScreen &&(
               <div className="q_m_wrapper">
                 <ShowQuestion question={question}/>
               </div>
-           )} 
+          )} 
 
           {/* Editors: */}
           {editorProvider === 'mirror' ? (
@@ -182,75 +166,27 @@ function App() {
             <div onClick={() => { changeEditor('mirror'); changeEditorTheme('dracula'); }} >🟣</div>
           </div>
 
+          {/* Medals: */}
           {!isEditorSpread && !isEditorFullScreen && (
               <Medals output={output} setShareText={handleSetShareText} />
           )}
 
           <OutputLog output={runCodeOutput} logs={logs} />
-
       </div>
-      <div className="bottom-bar">
-        {/* I/O Button */}
-        <div className="tooltip-io">
-          <span className="bottom-bar-btn" tabIndex="0">
-          <ChevronsLeftRightEllipsis size={16}/>
-            I/O
-          </span>
-          <span className="tooltiptext-io" style={{ left: '-23px' }}>
-            {inOut.slice(0, 3).map((test, index) => (
-              <span key={index}>
-                <span className="io-label">Input:</span>
-                <span>{formatValue(test.input)}</span>
-                <span className="io-label">Output:</span>
-                {((typeof (test.output) === 'boolean' || typeof (test.output) === 'object') && test.output !== null)
-                  ? JSON.stringify(test.output)
-                  : test.output}
-                <br />
-              </span>
-            ))}
-          </span>
-        </div>
 
-        {/* Help Button */}
-        <div className="tooltip-io">
-          <div className="bottom-bar-btn" onClick={handleExplain}>
-            <FileQuestion />
-            {/* <BadgeHelp size={14}/> */}
-            {loading ? "Thinking..." : "Explain"}
-          </div>
-          {explanation && (
-            <span className="tooltiptext-io" style={{ width: '300px', left: '-80%' }}>
-              {explanation}
-            </span>
-          )}
-        </div>
-
-        {/* Submit Button */}
-        <SubmitBtn 
-          code={code} 
-          setOutput={setOutput} 
-          setIsOutputShow={setIsOutputShow}
-          userId={userLog._id || ''} 
-          setIsEditorFullScreen={setIsEditorFullScreen} 
-          className="bottom-bar-btn" // make sure SubmitBtn accepts className
-        />
-
-        {/* Share Button */}
-        <div className="tooltip-io">
-          <div className="bottom-bar-btn" onClick={handleShareApp}>
-            <Share2 size={14}/>
-            Share
-          </div>
-        </div>
-
-        <div className="tooltip-io">
-          <div className="bottom-bar-btn" onClick={()=>runCode(code)}>
-            <Play size={14}/>
-            Run
-          </div>
-        </div>
-
-      </div>
+      {/* Bottom Bar: */}
+      <BottomBar
+        code={code}
+        setOutput={setOutput}
+        setIsOutputShow={setIsOutputShow}
+        userLog={userLog}
+        setIsEditorFullScreen={setIsEditorFullScreen}
+        inOut={inOut}
+        explanation={explanation}
+        handleExplain={handleExplain}
+        loading={loading}
+        runCode={runCode}
+      />
 
     </div>
   )
