@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
-import { formatValue } from '../utils/formatVal'
+import React from 'react'
 
 const ShowQuestion = ({question}) => {
     return (

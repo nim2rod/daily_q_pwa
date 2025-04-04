@@ -125,7 +125,6 @@ const CodeEditor = ({
     }
   }, [code])
   
-
   useEffect(() => {
     if (viewRef.current) {
       const height = isEditorFullScreen ? '100vh' : isEditorSpread ? '500px' : '300px'

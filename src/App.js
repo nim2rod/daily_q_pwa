@@ -3,17 +3,13 @@ import React, { useState, useEffect } from 'react';
 import CodeEditorMirror from './cmp/Editor';
 import CodeEditorMonaco from './cmp/Editor_monaco'
 import ShowQuestion from './cmp/ShowQuestion';
-import SubmitBtn from './cmp/SubmitButton'
 import Header from './cmp/Header'
 import SocialShareButtons from './cmp/SocialShareButtons'
 import Results from './cmp/Results'
 import Medals from './cmp/Medals'
 import BottomBar from './cmp/BottomBar'
 import OutputLog from './cmp/OutputLog'
-import { formatValue } from './utils/formatVal'
 import axios from 'axios'
-
-import { ChevronsLeftRightEllipsis, FileQuestion,BadgeHelp, ArrowUpFromLine, Share2, Play } from 'lucide-react'
 import './App.css'
 
 function App() {
