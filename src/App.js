@@ -11,7 +11,9 @@ import Medals from './cmp/Medals'
 import OutputLog from './cmp/OutputLog'
 import { formatValue } from './utils/formatVal'
 import axios from 'axios'
-import './App.css';
+
+import { ChevronsLeftRightEllipsis, FileQuestion,BadgeHelp, ArrowUpFromLine, Share2, Play } from 'lucide-react'
+import './App.css'
 
 function App() {
   const [code, setCode] = useState('')
@@ -189,7 +191,10 @@ function App() {
       <div className="bottom-bar">
         {/* I/O Button */}
         <div className="tooltip-io">
-          <span className="bottom-bar-btn" tabIndex="0">I/O</span>
+          <span className="bottom-bar-btn" tabIndex="0">
+          <ChevronsLeftRightEllipsis size={16}/>
+            I/O
+          </span>
           <span className="tooltiptext-io" style={{ left: '-23px' }}>
             {inOut.slice(0, 3).map((test, index) => (
               <span key={index}>
@@ -208,6 +213,8 @@ function App() {
         {/* Help Button */}
         <div className="tooltip-io">
           <div className="bottom-bar-btn" onClick={handleExplain}>
+            <FileQuestion />
+            {/* <BadgeHelp size={14}/> */}
             {loading ? "Thinking..." : "Explain"}
           </div>
           {explanation && (
@@ -230,12 +237,14 @@ function App() {
         {/* Share Button */}
         <div className="tooltip-io">
           <div className="bottom-bar-btn" onClick={handleShareApp}>
+            <Share2 size={14}/>
             Share
           </div>
         </div>
 
         <div className="tooltip-io">
           <div className="bottom-bar-btn" onClick={()=>runCode(code)}>
+            <Play size={14}/>
             Run
           </div>
         </div>

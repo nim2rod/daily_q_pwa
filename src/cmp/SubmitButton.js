@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import { ArrowUpFromLine } from 'lucide-react'
 
 const SubmitButton = ({ code, setOutput, userId, setIsEditorFullScreen, setIsOutputShow, className }) => {
 
@@ -30,6 +31,7 @@ const SubmitButton = ({ code, setOutput, userId, setIsEditorFullScreen, setIsOut
 
     return (
         <div className={className} onClick={handleSubmit}>
+         <ArrowUpFromLine size={16}/>
           Submit
         </div>
     )
