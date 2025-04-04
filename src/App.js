@@ -175,6 +175,7 @@ function App() {
           <div className="theme-editor-choose">
             <img src={require('./icons/vs-black.png')} alt="info"
               style={{ width: 25 }}
+              className="hide-on-mobile"
               onClick={() => { changeEditor('vs'); changeEditorTheme('vs-dark'); }}
             />
             <div onClick={() => { changeEditor('mirror'); changeEditorTheme('eclipse'); }} >⚪️</div>
