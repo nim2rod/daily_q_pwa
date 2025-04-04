@@ -46,19 +46,16 @@ const CodeEditor = ({
     {
       label: 'console.log',
       type: 'function',
-      info: 'Log output to the browser console',
       apply: 'console.log();' 
     },
     {
       label: 'log',
       type: 'function',
-      info: 'Insert console.log()',
       apply: 'console.log();'
     },
     {
       label: 'clg',
       type: 'keyword',
-      info: 'Shortcut for console.log',
       apply: 'console.log();'
     }
   ]
