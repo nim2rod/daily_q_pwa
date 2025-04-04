@@ -73,7 +73,7 @@ body {
   background-color: #ffffff;
   border-bottom: 2px solid #eee;
   box-shadow: 0 0 10px rgb(0 0 0 / 5%);
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .q_m_wrapper {
@@ -442,11 +442,11 @@ body {
   font-size: 14px;
   /* color: white; */
   /* background-color: #6c757d; */
-  background-color: rgb(206, 228, 248,0.5);
+  background-color: rgb(206, 228, 248, 0.5);
 }
 
 .bottom-bar-btn:hover {
-  background-color: rgb(206, 228, 248,1);
+  background-color: rgb(206, 228, 248, 1);
 }
 
 /* OutputLog: */
