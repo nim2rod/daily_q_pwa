@@ -1,5 +1,6 @@
 // Medals.js: 
 import React, { useState, useEffect, useCallback } from 'react'
+import { Info } from 'lucide-react';
 
 const Medals = ({ output, setShareText }) => {
     const [streak, setStreak] = useState(0)
@@ -93,7 +94,8 @@ const Medals = ({ output, setShareText }) => {
                     <div className="tooltip">
                         <strong>Medals Earned:
                             {medals.length ? medals.join(', ') : <span style={{marginLeft:'5px', fontWeight:'300'}}>0</span>}
-                            <img src={require('.././icons/info.png')} alt="info" className="info-icon" />
+                            {/* <img src={require('.././icons/info.png')} alt="info" className="info-icon" /> */}
+                            <Info size={22} className="info-icon"/>
                         </strong>
                        <span className="tooltiptext">
                             Earn medals by solving questions:<br />
