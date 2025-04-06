@@ -1,5 +1,5 @@
 import React from 'react'
-import { ChevronsLeftRightEllipsis, FileQuestion, Share2, Play } from 'lucide-react'
+import { ChevronsLeftRightEllipsis, FileQuestion, Share2, Play, BadgeHelp } from 'lucide-react'
 import { formatValue } from '../utils/formatVal'
 import SubmitBtn from './SubmitButton'
 
@@ -60,8 +60,7 @@ const BottomBar = ({
         {/* Help Button */}
         <div className="tooltip-io">
             <div className="bottom-bar-btn" onClick={handleExplain}>
-                <FileQuestion />
-                {/* <BadgeHelp size={14}/> */}
+                <FileQuestion size={14}/>
                 {loading ? "Thinking..." : "Explain"}
             </div>
             {explanation && (
