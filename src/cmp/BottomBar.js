@@ -59,15 +59,17 @@ const BottomBar = ({
 
         {/* Help Button */}
         <div className="tooltip-io">
-            <div className="bottom-bar-btn" onClick={handleExplain}>
+            <div className="bottom-bar-btn" 
+            // onClick={handleExplain}
+            >
                 <FileQuestion size={14}/>
-                {loading ? "Thinking..." : "Explain"}
+                {loading ? "Thinking..." : "AI Help"}
             </div>
-            {explanation && (
                 <span className="tooltiptext-io" style={{ width: '300px', left: '-80%' }}>
                     {explanation}
+                    <br />
+                    <span className="io-label" onClick={handleExplain}>Click For Asking New Help From AI</span>
                 </span>
-            )}
         </div>
 
         {/* Submit Button */}

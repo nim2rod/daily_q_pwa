@@ -65,12 +65,13 @@ function App() {
   const changeEditorTheme = (theme) => setEditorTheme(theme)
 
   const handleExplain = async () => {
-    if (hasFetchedExplanation) return
+    // if (hasFetchedExplanation) return
 
     setLoading(true)
     try {
         const res = await axios.post(`${process.env.REACT_APP_URL}/explain`, {
             question: question,
+            code: code,
         })
         setExplanation(res.data.explanation)
         setHasFetchedExplanation(true)
