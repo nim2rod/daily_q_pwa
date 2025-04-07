@@ -40,7 +40,7 @@ const Results = ({ output, setIsOutputShow, isOutputShow }) => {
                             <tbody>
                                 {Results.map((test, index) => (
                                     <tr key={index}>
-                                        <td>{formatValue(test.input)}</td>
+                                        <td>{formatValue(test.input.length === 1 ? test.input[0] : test.input)}</td>
                                         <td>
                                             {test.output !== undefined && test.output !== null 
                                                 ? (typeof test.output === 'boolean' || typeof test.output === 'string' 
