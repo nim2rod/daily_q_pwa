@@ -46,7 +46,8 @@ const BottomBar = ({
                 {inOut.slice(0, 3).map((test, index) => (
                 <span key={index}>
                     <span className="io-label">Input:</span>
-                    <span>{formatValue(test.input)}</span>
+                    {/* <span>{formatValue(test.input)}</span> */}
+                    <span>{formatValue(test.input.length === 1 ? test.input[0] : test.input)}</span>
                     <span className="io-label">Output:</span>
                     {((typeof (test.output) === 'boolean' || typeof (test.output) === 'object') && test.output !== null)
                     ? JSON.stringify(test.output)

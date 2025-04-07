@@ -33,8 +33,6 @@ function App() {
   const [runCodeOutput, setRunCodeOutput] = useState([])
   const [logs, setLogs] = useState([])
 
-
-
   useEffect(() => {
     if (output && output.Passed !== undefined) {
       setIsPassed(output.Passed)
