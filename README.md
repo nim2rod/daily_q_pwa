@@ -63,4 +63,16 @@ https://dailyqpwa-nimrod-devs-projects.vercel.app/
 
 ---
 
+<img width="346" height="714" alt="Screen Shot 2025-10-21 at 14 34 20" src="https://github.com/user-attachments/assets/02093acd-be10-41cc-bc96-943aa7a483c9" />
+
+<img width="380" height="776" alt="Screen Shot 2025-10-21 at 16 06 20" src="https://github.com/user-attachments/assets/cb7e2c9e-d5c6-472f-b968-aed6275edb74" />
+
+<img width="384" height="773" alt="Screen Shot 2025-10-21 at 16 10 14" src="https://github.com/user-attachments/assets/78153f67-578a-4146-a763-ed4a3a61b73e" />
+
+<img width="524" height="644" alt="Screen Shot 2025-10-21 at 16 11 10" src="https://github.com/user-attachments/assets/e4800f7c-c87b-4d0e-82ce-fc02e52c6856" />
+
+
+
+
+
 ### 🧑‍💻 From developers to developers — keep learning, every day.
