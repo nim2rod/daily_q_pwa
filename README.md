@@ -1,70 +1,66 @@
-# Getting Started with Create React App
+# Daily Question App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Sharpen your coding skills every day with one focused challenge.  
+All users receive **the same daily question**, creating a shared and motivating learning experience.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+### 💻 Features
 
-### `npm start`
+* **Daily Question** — A new coding challenge appears every day for all users.  
+* **Cross-Platform Access** — Solve directly from your **phone**, **desktop**, or **Chrome extension**.  
+* **Flexible Interface** — Switch between **regular**, **large**, or **full-screen** layouts.  
+* **Themes** — Choose your preferred **color theme** for comfortable viewing (light, dark, or custom).  
+* **Code Autocomplete** — Built-in suggestions help you write faster and cleaner code.  
+* **Run & Submit** — Test your code, view the output and logs, and submit when ready.  
+* **AI Assistance** — Get contextual hints or explanations based on your specific solution.  
+* **Debug Tools** — View detailed input/output logs to understand errors and improve performance.  
+* **Medals & Progress** — Earn medals for solving questions and track your daily streak.  
+* **Social Sharing** — Share your achievements or solutions on social media directly from the app.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### ⚙️ Technical Highlights
 
-### `npm test`
+* Developed with **React** and **Node.js** for a smooth and responsive experience.  
+* Stores user data (progress, theme, layout, etc.) locally using **Local Storage**.  
+* Backend API manages daily question delivery, code execution, submissions, and rankings.  
+* Fully responsive layout designed for both mobile and desktop.  
+* Chrome Extension version allows instant access — stays open while you browse, unlike most extensions that close when focus changes.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+### 🏅 Progress Tracking
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* Earn medals and track your daily streak.  
+* Each solution is stored locally and synced automatically.  
+* Visual feedback helps identify strengths and improvement areas.  
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 🧠 For Developers
 
-### `npm run eject`
+The **Daily Question App** makes algorithm practice simple, fast, and motivating.  
+It’s designed for real-world use — by developers, for developers.  
+Whether you’re preparing for interviews or just keeping your skills sharp,  
+this app helps you stay consistent and improve daily.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 📦 Coming Soon
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+* Weekly leaderboard  
+* AI-generated explanations per question  
+* Collaboration & peer review mode  
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+### Chrome Extension
+https://chromewebstore.google.com/detail/dailyq-coding-practice/kdekchjfadjpldnpojmjggghhhbnoifb?hl=iw&authuser=0
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### PWA
+https://dailyqpwa-nimrod-devs-projects.vercel.app/
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### 🧑‍💻 From developers to developers — keep learning, every day.
